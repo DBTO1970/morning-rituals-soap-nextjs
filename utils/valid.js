@@ -1,7 +1,8 @@
 const valid = (name, email, password, cf_password) => {
-    if(!name || !email || !password) {
+    if(!name || !email || !password) 
         return'Please add all fields'
-    } if(!validateEmail(email))
+        
+    if(!validateEmail(email))
     return 'Invalid email.'
 
     if(password.length < 6)

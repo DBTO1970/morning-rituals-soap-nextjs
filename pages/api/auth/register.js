@@ -7,8 +7,9 @@ import bcrypt from 'bcrypt'
 
 connectDB()
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-    switch(req.method) {
+    switch(req.method){
         case "POST":
             await register(req, res)
             break;
@@ -21,6 +22,9 @@ const register = async (req, res) => {
 
         const errMsg = valid(name, email, password, cf_password)
         if(errMsg) return res.status(400).json({err: errMsg})
+
+        const user = await Users.findOne({ email })
+        if(user) return res.status(400).json({err: 'This email already exists'})
 
         const passwordHash = await bcrypt.hash(password, 12)
 

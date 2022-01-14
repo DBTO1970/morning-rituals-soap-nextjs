@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        default: 'https://drive.google.com/file/d/17mylrnYwOZ9xDmuYbGGBNpFNa-Q1KKsy/view?usp=sharing'
+        default: 'https://res.cloudinary.com/morning-rituals-soap/image/upload/v1642182802/no-face-avatar_vz5dab.svg'
     }
 }, {
     timestamps: true,

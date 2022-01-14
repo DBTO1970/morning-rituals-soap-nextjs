@@ -1,8 +1,9 @@
-import Link from 'next/link'
 import Head from 'next/head'
+import Link from 'next/link'
 import { useState, useContext } from 'react'
 import valid from '../utils/valid'
 import { DataContext } from '../store/GlobalState'
+import { postData } from '../utils/fetchData'
 
 const Register = () => {
     const initialState = { name: '', email: '', password: '', cf_password: '' }
@@ -14,6 +15,7 @@ const Register = () => {
     const handleChangeInput = e => {
         const {name, value} = e.target
         setUserData({...userData, [name]:value})
+        console.log(userData)
         dispatch({ type: 'NOTIFY', payload: {} })
     }
 
@@ -22,12 +24,19 @@ const Register = () => {
         const errMsg = valid(name, email, password, cf_password)
         if(errMsg) return dispatch({ type: 'NOTIFY', payload: {error: errMsg} })
 
-        dispatch({ type: 'NOTIFY', payload: {success: 'OK'} })
+        dispatch({ type: 'NOTIFY', payload: {loading: true} })
+
+        const res = await postData('auth/register', userData)
+
+        if(res.err) return dispatch({ type: 'NOTIFY', payload: {error: res.err} })
+
+        return dispatch({ type: 'NOTIFY', payload: {success: res.msg} })
+
     }
 
     return(
         <div>
-        <Head>
+            <Head>
                 <title>Registration Page</title>
             </Head>
              <form className='mx-auto my-4' style={{maxWidth: '500px'}} onSubmit={handleSubmit}>

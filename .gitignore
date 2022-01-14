@@ -19,6 +19,7 @@
 .DS_Store
 *.pem
 info.txt
+next.config.js
 
 # debug
 npm-debug.log*

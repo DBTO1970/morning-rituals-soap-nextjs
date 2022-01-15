@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { DataContext } from '../store/GlobalState'
+
 
 function NavBar() {
     const router = useRouter()
+    const { state, dispatch} = useContext(DataContext)
+    const { auth } = state
+
+
+
     const isActive = (r) => {
         if(r === router.pathname) {
             return "active"
@@ -46,12 +53,17 @@ function NavBar() {
                         </Link>
                         
                     </li>
+                    {/* {
+                        Object.keys(auth).length === 0 && 
+                        
+                    } */}
+
                     <li className="nav-item">
                         <Link href="/signin">
                             <a className={"nav-link" + isActive('/signin')}><i className="fas fa-sign-in-alt" aria-hidden="true"></i>  Sign In</a>
                         </Link>
                         
-                    </li>
+                        </li>
                 
                 {/* <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">

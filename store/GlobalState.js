@@ -14,7 +14,6 @@ export const DataProvider = ({children}) => {
     if(firstLogin) {
         getData('auth/accessToken').then(res => {
             if(res.err) return localStorage.removeItem("firstLogin")
-
             dispatch({
                 type: "AUTH",
                 payload: {

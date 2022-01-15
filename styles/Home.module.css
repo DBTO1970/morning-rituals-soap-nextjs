@@ -108,9 +108,15 @@
   margin-left: 0.5rem;
 }
 
+.nav-item {
+  text-decoration: none;
+  color: red;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
 }
+

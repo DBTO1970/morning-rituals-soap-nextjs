@@ -6,10 +6,10 @@ const connectDB = () => {
         return;
     }
     mongoose.connect(process.env.MONGODB_URL, {
-        // useCreateIndex: true,
-        // useFindAndModify: false,
-        // useNewUrlParser: true,
-        // useUnifiedTopology: true 
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useNewUrlParser: true,
+        useUnifiedTopology: true 
         // these are causing Operation `users.insertOne()` buffering timed out after 10000ms error
     }, err => {
         if(err) throw err;

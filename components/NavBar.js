@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
 import Link from 'next/link'
+// import image from 'next/image'
 import { useRouter } from 'next/router'
 import { DataContext } from '../store/GlobalState'
+import Cookie from 'js-cookie'
 
 
 function NavBar() {
@@ -18,6 +20,39 @@ function NavBar() {
             return ""
         }
     }
+
+    const handleLogout = () => {
+        Cookie.remove('refreshtoken', {path: 'api/auth/accessToken'})
+        localStorage.removeItem('firstLogin')
+        dispatch({ type: 'AUTH', payload: {}})
+        dispatch({ type: 'NOTIFY', payload: {success: 'Logged out!'}})
+    }
+
+
+    const loggedRouter = () => {
+        return (
+            <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+                <img src={auth.user.avatar} alt={auth.user.avatar} 
+                    style={{
+                        borderRadius: '50%', width: '30px', height: '30px', transform: 'translateY(-3px)', marginRight: '3px'
+                    }} />  {auth.user.name}
+            </a>
+            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <Link href="#">
+                <a className="dropdown-item">Profile</a>
+            </Link>
+           
+            <Link href="#">
+                <button className="dropdown-item" onClick={handleLogout} >Log Out</button>
+            </Link>
+            
+            </div>
+        </li>
+        )
+        
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link href="/">
@@ -53,38 +88,21 @@ function NavBar() {
                         </Link>
                         
                     </li>
-                    {/* {
-                        Object.keys(auth).length === 0 && 
-                        
-                    } */}
-
-                    <li className="nav-item">
+                    {
+                        Object.keys(auth).length === 0  
+                        ? 
+                        <li className="nav-item">
                         <Link href="/signin">
                             <a className={"nav-link" + isActive('/signin')}><i className="fas fa-sign-in-alt" aria-hidden="true"></i>  Sign In</a>
                         </Link>
                         
                         </li>
-                
-                {/* <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
-                    User Name
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <Link href="#">
-                        <a className="dropdown-item">Profile</a>
-                    </Link>
-                    <Link href="#">
-                        <a className="dropdown-item">Favorites</a>
-                    </Link>
-                    <Link href="#">
-                        <a className="dropdown-item">Orders</a>
-                    </Link>
-                    <Link href="/goodbye">
-                        <a className="dropdown-item" >Log Out</a>
-                    </Link>
+                        : loggedRouter()
+                    }
+
                     
-                    </div>
-                </li> */}
+                
+                
                 </ul>
             </div>
         </nav>

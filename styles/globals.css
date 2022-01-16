@@ -148,3 +148,6 @@ a.nav-item {
   }
 }
 
+img {
+  object-fit: cover;
+}

@@ -5,16 +5,22 @@ import ProductItem from '../components/product/ProductItem'
 function Products(props) {
     const [products, setProducts] = useState(props.products)
     return (
+        <React.Fragment>
+          <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
+            <h1 className='xs-12'>Soap</h1>
+            <hr/>
+              <div>
+                {
+                products.length === 0 ? 
+                <h2>No Products</h2>
+                : products.map(product => (
+                    <ProductItem key={product._id} product={product} />
+                ))
+                }
+            </div>
+          </div>
+        </React.Fragment>
         
-        <div item>
-            {
-            products.length === 0 ? 
-            <h2>No Products</h2>
-            : products.map(product => (
-                <ProductItem key={product._id} product={product} />
-            ))
-            }
-        </div>
       
     )
 }

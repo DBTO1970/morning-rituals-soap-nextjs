@@ -58,29 +58,32 @@ function Signin() {
             <Head>
                 <title>Sign-In Page</title>
             </Head>
-            <form className='mx-auto my-4' style={{maxWidth: '500px'}} onSubmit={handleSubmit} >
-                <div className="form-group">
-                    <label htmlFor="email">Email address</label>
-                    <input 
-                        type="email" 
-                        className="form-control" id="loginEmail" 
-                        aria-describedby="emailHelp" name="email" 
-                        value={email} 
-                        onChange={handleChangeInput} 
+            <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
+            <h1 className='xs-12'>Log In</h1>
+            <hr/>
+                <form className='mx-auto my-4' style={{maxWidth: '500px'}} onSubmit={handleSubmit} >
+                    <div className="form-group">
+                        <label htmlFor="email">Email address</label>
+                        <input 
+                            type="email" 
+                            className="form-control" id="loginEmail" 
+                            aria-describedby="emailHelp" name="email" 
+                            value={email} 
+                            onChange={handleChangeInput} 
 
-                    />
+                        />
+                        
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input type="password" className="form-control" id="loginPassword" name="password" value={password} onChange={handleChangeInput} />
+                    </div>
                     
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" className="form-control" id="loginPassword" name="password" value={password} onChange={handleChangeInput} />
-                </div>
-                
-                <button type="submit" className="btn btn-dark w-100">Sign In</button>
-                
-                <p className="my-2">Would you like to create an account? <Link href="/register"><a style={{color: 'crimson'}}> Register Now</a></Link></p>
-                </form>
-
+                    <button type="submit" className="btn btn-dark w-100">Sign In</button>
+                    
+                    <p className="my-2">Would you like to create an account? <Link href="/register"><a style={{color: 'crimson'}}> Register Now</a></Link></p>
+                    </form>
+            </div>
         </div>
     )
 }

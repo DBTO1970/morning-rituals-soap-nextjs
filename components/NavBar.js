@@ -54,15 +54,15 @@ function NavBar() {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{backgroundImage: `url('./coffee_beans_banner.jpg')`, height:'auto'}}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{backgroundImage: `url('./coffee_beans_banner.jpg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height:'auto'}}>
         <Link href="/">
-            <a className="navbar-brand" style={{color: 'white'}}>Morning Rituals Soap</a>
+            <a className="navbar-brand" style={{color: 'white'}}><h1>Morning Rituals Soap</h1></a>
         </Link>
             
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style={{color: 'white'}} >
                 <span className="navbar-toggler-icon" ></span>
             </button>
-            <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown" >
                 <ul className="navbar-nav">
                 <li className="nav-item">
                         <Link href="/products">

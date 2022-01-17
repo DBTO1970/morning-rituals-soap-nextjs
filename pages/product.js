@@ -1,6 +1,8 @@
 const Product = () => {
     return(
-      <div>Product</div>
+      <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
+        <h1>{product}</h1>
+      </div>
     )
   }
   

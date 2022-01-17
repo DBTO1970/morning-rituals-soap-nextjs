@@ -48,6 +48,9 @@ const Register = () => {
             <Head>
                 <title>Registration Page</title>
             </Head>
+            <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
+            <h1 className='xs-12'>Register</h1>
+            <hr/>
              <form className='mx-auto my-4' style={{maxWidth: '500px'}} onSubmit={handleSubmit}>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Name</label>
@@ -94,6 +97,7 @@ const Register = () => {
                 <button type="submit" className="btn btn-dark w-100">Register</button>
                 <p className="my-2">Already have an account? <Link href="/signin"><a style={{color: 'crimson'}}> Sign In</a></Link></p>
                 </form>
+        </div>
         </div>
     )
 }

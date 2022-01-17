@@ -3,7 +3,7 @@ import React from 'react'
 function About() {
     return (
         <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
-            <h1>Morning Rituals Soap</h1>
+            <h1>About Morning Rituals</h1>
             <hr />
             <h2>Handcrafted with Simple Ingredients</h2>
             <p>We craft our soap in a variety of coffee shop scents and other pleasing fragrances. Coffee soap used in the shower may help to reduce the appearance of cellulite, redness, acne and dark circles. It’s also great in the kitchen to remove food odors and for use after gardening.</p>

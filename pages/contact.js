@@ -10,8 +10,9 @@ function Contact() {
     
 
     return (
-        <div style={{margin: '2rem'}}>
+        <div  className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
         <h1>Contact Morning Rituals Soap</h1>
+        <hr/>
             <form>
                 <div className="form-group">
                     <label htmlFor="nameField">Email address</label>

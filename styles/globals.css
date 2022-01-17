@@ -46,6 +46,8 @@ a:hover {
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  bottom: 0;
+  color: brown;
 }
 
 .footer a {
@@ -181,6 +183,7 @@ img {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+
 
 
  

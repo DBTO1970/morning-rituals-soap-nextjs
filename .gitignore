@@ -20,6 +20,7 @@
 *.pem
 info.txt
 next.config.js
+/data/initialData.json
 
 # debug
 npm-debug.log*

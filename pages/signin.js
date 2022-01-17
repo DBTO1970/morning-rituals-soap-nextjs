@@ -54,7 +54,7 @@ function Signin() {
     }, [auth])
 
     return (
-        <div>
+        <div style={{margin: '2rem'}}>
             <Head>
                 <title>Sign-In Page</title>
             </Head>

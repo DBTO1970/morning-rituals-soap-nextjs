@@ -44,7 +44,7 @@ const Register = () => {
     }, [auth])
 
     return(
-        <div>
+        <div style={{margin: '2rem'}}>
             <Head>
                 <title>Registration Page</title>
             </Head>

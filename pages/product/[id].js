@@ -1,33 +1,19 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { getData } from '../../utils/fetchData'
+import {DataContext } from '../../store/GlobalState'
+import { addToCart } from '../../store/Actions'
 
-
-const userLink = () => {
-
-    return(
-        <>
-            <Link href={'/products/'}>
-                <a className='btn btn-info' 
-                    style={{marginRight: '5px', flex: 1}}><i className="fas fa-arrow-left"></i> Back</a>
-            </Link>
-            {/* <button><a className='btn btn-info' 
-                    style={{marginRight: '5px', flex: 1}}><i className="fas fa-arrow-left" onClick={router.back()}></i> Back</a></button> */}
-            <button className='btn btn-success'
-                style={{marginLeft: '5px', flex: 1}}>
-                <i className="fas fa-shopping-basket" style={{margin: '0 5px'}}></i>  
-                Add to Basket
-            </button>
-
-        </>
-    )
-}
 
 const ProductDetail = (props) => {
     const [product] = useState(props.product)
     const images = [product.image, product.Alt1, product.Alt2]
     const [tab, setTab] = useState(0)
+
+    const { state, dispatch } = useContext(DataContext)
+    const { cart } = state
+
     const isActive = (index) => {
         if(tab === index) return " active";
         return ""
@@ -75,7 +61,25 @@ const ProductDetail = (props) => {
                 </div>
                 
             <div className="row justify-content-between mx-0" style={{marginTop: '20px'}}>
-                    {userLink()}
+           
+            <Link href={'/products/'}>
+                <a className='btn btn-info' 
+                    style={{marginRight: '5px', flex: 1}}><i className="fas fa-arrow-left"></i> Back</a>
+            </Link>
+            {/* <button><a className='btn btn-info' 
+                    style={{marginRight: '5px', flex: 1}}><i className="fas fa-arrow-left" onClick={router.back()}></i> Back</a></button> */}
+            <button className='btn btn-success'
+                style={{marginLeft: '5px', flex: 1}} 
+                disabled={product.inStock === 0 ? true : false }
+                onClick={() => dispatch(addToCart(product, cart))} >
+                <i 
+                    className="fas fa-shopping-basket" 
+                    style={{margin: '0 5px'}} 
+                    ></i>  
+                Add to Basket
+            </button>
+
+        
                 </div>
             </div>
             <div>

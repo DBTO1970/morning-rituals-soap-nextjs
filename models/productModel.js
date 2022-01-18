@@ -44,6 +44,7 @@ const productSchema = new mongoose.Schema({
     },
     inStock: {
         type: Number,
+        required: true,
         default: 10
     },
     sold: {

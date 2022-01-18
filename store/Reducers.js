@@ -15,9 +15,10 @@ const reducers = (state, action) => {
         case ACTIONS.ADD_CART:
             return {
                 ...state, 
+                notify: action.payload,
                 cart: action.payload
             };
-            default:
+        default:
             return state
                 
     }

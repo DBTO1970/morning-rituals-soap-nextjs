@@ -18,8 +18,8 @@ const ProductItem = ({product}) => {
                 </Link>
                 <button className='btn btn-success'
                     style={{marginLeft: '5px', flex: 1}} 
-                    onClick={() => dispatch(addToCart(product, cart))} 
-                >
+                    disabled={product.inStock === 0 ? true : false }
+                    onClick={() => dispatch(addToCart(product, cart))} >
                     <i className="fas fa-shopping-basket" style={{margin: '0 5px'}}></i>  
                     Add to Basket
                 </button>
@@ -32,7 +32,7 @@ return (
         <div className="card" >
             <img className="card-img-top" src={product.images[0].url} alt={product.name} style={{borderRadius: '10px'}} />
             <div className="card-body">
-                <h5 className="card-title text-capitalize" title={product.name}>{product.name}</h5>
+                <h5 className="card-title" title={product.name}>{product.name}</h5>
                 <div className="row justify-content-between mx-0">
                     <h6 className="text-dark" >Price: ${product.price} US</h6>
                     {

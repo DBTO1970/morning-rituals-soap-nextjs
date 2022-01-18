@@ -6,7 +6,7 @@ function Products(props) {
     const [products, setProducts] = useState(props.products)
     return (
         <React.Fragment>
-          <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
+          <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}}>
             <h1 className='xs-12'>Soap</h1>
             <hr/>
               <div className='products'>

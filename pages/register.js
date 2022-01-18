@@ -18,7 +18,6 @@ const Register = () => {
     const handleChangeInput = e => {
         const {name, value} = e.target
         setUserData({...userData, [name]:value})
-        console.log(userData)
         dispatch({ type: 'NOTIFY', payload: {} })
     }
 
@@ -44,7 +43,7 @@ const Register = () => {
     }, [auth])
 
     return(
-        <div style={{margin: '2rem'}}>
+        <div style={{margin: '2rem', paddingTop: '100px'}}>
             <Head>
                 <title>Registration Page</title>
             </Head>

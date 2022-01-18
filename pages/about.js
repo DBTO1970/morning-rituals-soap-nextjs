@@ -2,7 +2,7 @@ import React from 'react'
 
 function About() {
     return (
-        <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
+        <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}}>
             <h1>About Morning Rituals</h1>
             <hr />
             <h2>Handcrafted with Simple Ingredients</h2>

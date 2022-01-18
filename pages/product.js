@@ -1,8 +1,12 @@
+import React from "react"
+
 const Product = () => {
     return(
-      <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
-        <h1>{product}</h1>
-      </div>
+      <React.Fragment>
+        <div  className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
+          <h1>{product}</h1>
+        </div>
+      </React.Fragment>
     )
   }
   

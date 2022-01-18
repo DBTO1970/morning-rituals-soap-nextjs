@@ -25,18 +25,26 @@
 }
 .products .card-text{
     height: 100px;
-    font-size: small;
-    overflow: hidden;
+    
+    overflow: auto;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
 }
 
 .btn {
-    white-space: nowrap;
+   white-space: nowrap;
    text-align: center;
+   transition: transform .2s;
+   -webkit-transition: transform .2s;
+   -moz-transition: transform .2s;
+   -ms-transition: transform .2s;
+   -o-transition: transform .2s;
 }
 
+.btn:hover {
+    transform: scale(1.02) margin(.2px);
+}
 /* --------- Detail Product ----------- */
 .detail_page .img-thumbnail.active{
     border-color: orangered;

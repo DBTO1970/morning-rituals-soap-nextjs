@@ -12,7 +12,7 @@ const Home = (props) => {
     <React.Fragment>
     
       <Head>
-        <title>Home Page</title>
+        <title>Morning Rituals Soap</title>
       </Head>
 
       {/* <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -33,18 +33,18 @@ const Home = (props) => {
           </div>
         </div>
         <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span classNameName="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span classNameName="carousel-control-prev-icon" ></span>
           <span className="sr-only">Previous</span>
         </a>
         <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="carousel-control-next-icon" ></span>
           <span className="sr-only">Next</span>
         </a>
       </div> */}
       
       <div>
       {/* <div style={{justifyContent: 'center', alignItems: 'center'}} className="item" > */}
-      <div  className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}} >
+      <div  className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
         <h2>Handcrafted with Simple Ingredients</h2>
         <p>We craft our soap in a variety of coffee shop scents and other pleasing fragrances. Coffee soap used in the shower may help to reduce the appearance of cellulite, redness, acne and dark circles. It&apos;s also great in the kitchen to remove food odors and for use after gardening.</p>
         <hr />

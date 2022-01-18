@@ -2,7 +2,7 @@ import React from 'react'
 
 function Goodbye() {
     return (
-        <div>
+        <div style={{paddingTop: '100px'}}>
             Thank you for visiting.  Good Bye.
         </div>
     )

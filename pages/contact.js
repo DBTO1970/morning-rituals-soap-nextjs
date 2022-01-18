@@ -10,7 +10,7 @@ function Contact() {
     
 
     return (
-        <div  className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
+        <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}}>
         <h1>Contact Morning Rituals Soap</h1>
         <hr/>
             <form>

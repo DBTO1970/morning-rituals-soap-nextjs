@@ -26,10 +26,9 @@ const productSchema = new mongoose.Schema({
         trim: true,
         default: 6
     },
-    image: {
-        type: String,
+    images: {
+        type: Array,
         required: true,
-        default: 'https://res.cloudinary.com/morning-rituals-soap/image/upload/v1642426899/IMG_0006_b6lgjc.jpg'
     },
     dateMade: {
         type: Date,

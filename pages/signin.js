@@ -18,7 +18,6 @@ function Signin() {
     const handleChangeInput = e => {
         const {name, value} = e.target
         setUserData({...userData, [name]:value})
-        console.log(userData)
         dispatch({ type: 'NOTIFY', payload: {} })
     }
 
@@ -54,7 +53,7 @@ function Signin() {
     }, [auth])
 
     return (
-        <div style={{margin: '2rem'}}>
+        <div style={{margin: '2rem', paddingTop: '100px'}}>
             <Head>
                 <title>Sign-In Page</title>
             </Head>

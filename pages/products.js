@@ -9,7 +9,7 @@ function Products(props) {
           <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
             <h1 className='xs-12'>Soap</h1>
             <hr/>
-              <div>
+              <div className='products'>
                 {
                 products.length === 0 ? 
                 <h2>No Products</h2>

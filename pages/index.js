@@ -41,30 +41,34 @@ const Home = (props) => {
           <span className="sr-only">Next</span>
         </a>
       </div> */}
-      <div className="container" style={{alignItems: 'center', justifyContent: 'center', margin: '2rem'}}>
-      <div style={{justifyContent: 'center', alignItems: 'center'}} className="item" >
+      
+      <div>
+      {/* <div style={{justifyContent: 'center', alignItems: 'center'}} className="item" > */}
+      <div  className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}} >
         <h2>Handcrafted with Simple Ingredients</h2>
-              <p>We craft our soap in a variety of coffee shop scents and other pleasing fragrances. Coffee soap used in the shower may help to reduce the appearance of cellulite, redness, acne and dark circles. It’s also great in the kitchen to remove food odors and for use after gardening.</p>
-              <hr />
-
-        <div className='item'>
+        <p>We craft our soap in a variety of coffee shop scents and other pleasing fragrances. Coffee soap used in the shower may help to reduce the appearance of cellulite, redness, acne and dark circles. It&apos;s also great in the kitchen to remove food odors and for use after gardening.</p>
+        <hr />
+        <h4>Featured Soaps</h4>
+          <div className='products'>
+          
+            {
+              products.length === 0 ? 
+              <h2>No Products</h2>
+              : products.map(product => (
+                product.featured === true ? 
+                <ProductItem key={product._id} product={product} />
+                : <></>
+              ))
+            }
+          </div>
+      </div>
         
-          {
-            products.length === 0 ? 
-            <h2>No Products</h2>
-            : products.map(product => (
-              product.featured === true ? 
-              <ProductItem key={product._id} product={product} />
-              : <></>
-            ))
-          }
-        </div>
       </div>
             
 
       
-      </div>
-
+      {/* </div> */}
+     
     </React.Fragment>
   )
 }

@@ -32,7 +32,7 @@ export const DataProvider = ({children}) => {
         }, [])
 
     useEffect(() => {
-        localStorage.setItem('__next__cart01__mrs', JSON.stringify(cart))
+        localStorage.setItem('__next__cart01__jerry', JSON.stringify(cart))
     }, [cart])
 
     return(

@@ -158,13 +158,25 @@ a.nav-item {
 
 img {
   object-fit: cover;
-  border-radius: '10px';
-  -webkit-border-radius: '10px';
-  -moz-border-radius: '10px';
-  -ms-border-radius: '10px';
-  -o-border-radius: '10px';
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
+.avatar {
+  border-radius:50%;
+
+}
+
+.img {
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
 .navbar {
   color: 'white';
   background-color: 'black';

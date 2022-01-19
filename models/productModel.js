@@ -54,6 +54,11 @@ const productSchema = new mongoose.Schema({
     featured: {
         type: Boolean,
         default: false,
+    },
+    category: {
+        type: String,
+        required: true,
+        default: 'soap'
     }
 }, {
     timestamps: true,

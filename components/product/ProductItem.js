@@ -29,7 +29,7 @@ const ProductItem = ({product}) => {
     }
 return (
     <React.Fragment>
-        <div className="card" >
+        <div className="card" key={product._id}>
             <img className="card-img-top" src={product.images[0].url} alt={product.name} style={{borderRadius: '10px'}} />
             <div className="card-body">
                 <h5 className="card-title" title={product.name}>{product.name}</h5>
@@ -37,11 +37,8 @@ return (
                     <h6 className="text-dark" >Price: ${product.price} US</h6>
                     {
                         product.inStock > 0 ? 
-                        <h6 className="text-danger">In Stock: {product.inStock} </h6> :
-                        <div>
+                        <h6 className="text-danger">In Stock: {product.inStock} </h6> : 
                         <h6 className="text-danger"> Out of Stock</h6>
-                        {/* <h6 className="text-danger small"> This batch will be ready on {product.dateReady}</h6> */}
-                        </div>
                         
                     }
                 </div>

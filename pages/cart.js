@@ -4,12 +4,20 @@ import React, { useContext, useState, useEffect } from 'react'
 import { DataContext } from '../store/GlobalState'
 import CartItem from '../components/cart/CartItem'
 import { getData } from '../utils/fetchData'
+import PaypalBtn from './paypalBtn'
 
 const Cart = () => {
     const { state, dispatch } = useContext(DataContext)
     const { cart, auth } = state
 
     const [total, setTotal] = useState(0)
+
+    const [address, setAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [stateUS, setStateUS] = useState('')
+    const [zipcode, setZipcode] = useState('')
+    const [phone, setPhone] = useState('')
+    const [payment, setPayment] = useState(false)
 
     useEffect(()=>{
         const getTotal = () => {
@@ -43,7 +51,13 @@ const Cart = () => {
             }
             updateCart()
         }
-    }, [])
+    })
+
+    const handlePayment = () => {
+        if(!address || !phone)
+        return dispatch({ type: 'NOTIFY', payload: {err: 'Please complete shipping information'}})
+        setPayment(true)
+    }
 
 
     if(cart.length === 0) return <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
@@ -73,20 +87,31 @@ const Cart = () => {
                 <form>
                     <h2>Shipping Details</h2>
                     <label htmlFor='address'> Address</label>
-                    <input type="text" name="address" id="address" className="form-control mb-2" />
-                    <label htmlFor='address'> City</label>
-                    <input type="text" name="city" id="city" className="form-control mb-2" />
-                    <label htmlFor='address'> State</label>
-                    <input type="text" name="state" id="state" className="form-control mb-2" />
-                    <label htmlFor='address'> Zipcode</label>
-                    <input type="text" name="zipcode" id="zipcode" className="form-control mb-2" />
-                    <label htmlFor='address'> Phone</label>
-                    <input type="tel" name="phone" id="phone" className="form-control mb-2" />
+                    <input type="text" name="address" id="address" className="form-control mb-2" value={address} onChange={e => setAddress(e.target.value)} />
+                    <label htmlFor='city'> City</label>
+                    <input type="text" name="city" id="city" className="form-control mb-2" value={city} onChange={e => setCity(e.target.value)}  />
+                    <label htmlFor='stateUS'> State</label>
+                    <input type="text" name="stateUS" id="stateUS" className="form-control mb-2" value={stateUS} onChange={e => setStateUS(e.target.value)}  />
+                    <label htmlFor='zipcode'> Zipcode</label>
+                    <input type="text" name="zipcode" id="zipcode" className="form-control mb-2" value={zipcode} onChange={e => setZipcode(e.target.value)}  />
+                    <label htmlFor='phone'> Phone</label>
+                    <input type="tel" name="phone" id="phone" className="form-control mb-2" value={phone} onChange={e => setPhone(e.target.value)}  />
                 </form>
                 <h3>Order Total: <span className='text-info'>${total}</span></h3>
-                <Link href={auth.user ? '#' : '/signin'}>
-                    <a className='btn btn-dark'>Proceed to checkout</a>
-                </Link>
+                {
+                    payment 
+                    ? <PaypalBtn 
+                        total={total} 
+                        address={address} 
+                        phone={phone} 
+                        state={state} 
+                        dispatch={dispatch}
+                    />
+                    : <Link href={auth.user ? '#' : '/signin'}>
+                    <a className='btn btn-dark my-2' onClick={handlePayment} >Proceed to checkout</a>
+                    </Link>
+                }
+                
             </div>
             
             </div>

@@ -12,6 +12,7 @@ class MyDocument extends Document{
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" ></script>
                     
                     <script src="https://kit.fontawesome.com/2848bb6c17.js"></script>
+                    <script src={`https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID}&currency=USD`}></script>
                 </Head>
                 <body>
                     <Main />

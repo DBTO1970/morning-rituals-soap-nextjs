@@ -43,7 +43,12 @@ const CartItem = ({item, dispatch, cart}) => {
             </td>
             <td className='align-middle' style={{ cursor: 'pointer' }} >
             <button className='btn btn-outline-danger m-1' style={{borderRadius: '20%'}} 
-                onClick={() => dispatch(removeItem(cart, item._id)) }>
+                data-toggle="modal" data-target="#exampleModal" 
+                onClick={() => dispatch({
+                    type: 'ADD_MODAL',
+                    payload: { data: cart, id: item._id, title: item.name }
+                })}
+                >
                 <i className="fas fa-trash"></i>
             </button>
             

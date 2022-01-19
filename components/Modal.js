@@ -9,7 +9,7 @@ const Modal = () => {
 
     const handleSubmit = () => {
         dispatch(deleteItem(modal.data, modal.id, 'ADD_CART'))
-        dispatch({ type: 'ADD_MODAL', payload: {}})
+        dispatch({ type: 'ADD_CART', payload: {}})
     }
 
 

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { useContext, useState, useEffect } from 'react'
@@ -109,7 +110,7 @@ const Cart = () => {
                     />
                     : <Link href={auth.user ? '#' : '/signin'}>
                     <a className='btn btn-dark my-2' onClick={handlePayment} >Proceed to checkout</a>
-                    </Link>
+                </Link>
                 }
                 
             </div>

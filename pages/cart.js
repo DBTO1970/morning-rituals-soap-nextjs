@@ -52,7 +52,7 @@ const Cart = () => {
             }
             updateCart()
         }
-    })
+    }, [dispatch])
 
     const handlePayment = () => {
         if(!address || !phone)
@@ -77,9 +77,7 @@ const Cart = () => {
             <table className='table my-3'>
                 <tbody>
                     {
-                        cart.map(item => (
-                            <CartItem key={item._id} item={item} dispatch={dispatch} cart={cart} />
-                        ))
+                        cart.map(item => (<CartItem key={item._id} item={item} dispatch={dispatch} cart={cart} />))
                     }
                    
                 </tbody>

@@ -14,14 +14,14 @@ const ProductItem = ({product}) => {
             <>
                 <Link href={`product/${product._id}`}>
                     <a className='btn btn-info' 
-                        style={{marginRight: '5px', flex: 1}}><i className="fas fa-info-circle" ></i>  More Info</a>
+                        style={{marginRight: '5px', flex: 1}}><i className="fas fa-info-circle" ></i> Info</a>
                 </Link>
                 <button className='btn btn-success'
                     style={{marginLeft: '5px', flex: 1}} 
                     disabled={product.inStock === 0 ? true : false }
                     onClick={() => dispatch(addToCart(product, cart))} >
                     <i className="fas fa-shopping-basket" style={{margin: '0 5px'}}></i>  
-                    Add to Basket
+                    Buy
                 </button>
 
             </>

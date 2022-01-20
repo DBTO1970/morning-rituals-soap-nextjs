@@ -61,10 +61,10 @@ const Cart = () => {
     }
 
 
-    if(cart.length === 0) return <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
+    if(cart.length === 0) return (<div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
         <h2>Your basket is empty</h2>
         <img className="img-responsive" style={{height: 'auto', width:'100%', borderRadius: '50px'}} src="/empty_basket.jpg" alt="empty_basket.jpg" />
-    </div>
+    </div>)
 
     return (
         <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
@@ -81,6 +81,7 @@ const Cart = () => {
                             <CartItem key={item._id} item={item} dispatch={dispatch} cart={cart} />
                         ))
                     }
+                   
                 </tbody>
             </table>
             </div>

@@ -43,7 +43,7 @@ const Cart = () => {
             }
             updateCart()
         }
-    }, [])
+    }, [dispatch])
 
 
     if(cart.length === 0) return <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >

@@ -12,7 +12,7 @@ const PaypalBtn = ({total, address, phone, state, dispatch}) => {
               return actions.order.create({
                 purchase_units: [{
                   amount: {
-                    value: total // data.total or data.cart.total // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+                    value: total,
                   }
                 }]
               });

@@ -27,15 +27,15 @@ export const DataProvider = ({children}) => {
         }, [])
 
     useEffect(() => {
-            const __next__cart01__jerry = JSON.parse(localStorage.getItem('__next__cart01__jerry'))
-            if(__next__cart01__jerry) dispatch({ 
+            const __morningrs__cart01__user01 = JSON.parse(localStorage.getItem('__morningrs__cart01__user01'))
+            if(__morningrs__cart01__user01) dispatch({ 
                 type: 'ADD_CART', 
-                payload: __next__cart01__jerry 
+                payload: __morningrs__cart01__user01 
             })
         }, [])
 
     useEffect(() => {
-        localStorage.setItem('__next__cart01__jerry', JSON.stringify(cart))
+        localStorage.setItem('__morningrs__cart01__user01', JSON.stringify(cart))
     }, [cart])
 
     return(

@@ -15,7 +15,7 @@ const Cart = () => {
 
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
-    const [stateUS, setStateUS] = useState('')
+    const [stateUS, setUS] = useState('')
     const [zipcode, setZipcode] = useState('')
     const [phone, setPhone] = useState('')
     const [payment, setPayment] = useState(false)
@@ -33,7 +33,7 @@ const Cart = () => {
     }, [cart])
 
     useEffect(() => {
-        const cartLocal = JSON.parse(localStorage.getItem('__next__cart01__jerry'))
+        const cartLocal = JSON.parse(localStorage.getItem('__morningrs__cart01__user01'))
         if(cartLocal && cartLocal.length > 0) {
             let newArr = []
             const updateCart = async () => {
@@ -77,21 +77,23 @@ const Cart = () => {
             <table className='table my-3'>
                 <tbody>
                     {
-                        cart.map(item => (<CartItem key={item._id} item={item} dispatch={dispatch} cart={cart} />))
+                        cart.map(item => (
+                            <CartItem key={item._id} item={item} dispatch={dispatch} cart={cart} />
+                            ))
                     }
                    
                 </tbody>
             </table>
             </div>
-            <div className='col-md-4 my-3 text-right item'>
+            <div className='col-md-4 my-3 text-right'>
                 <form>
                     <h2>Shipping Details</h2>
                     <label htmlFor='address'> Address</label>
                     <input type="text" name="address" id="address" className="form-control mb-2" value={address} onChange={e => setAddress(e.target.value)} />
                     <label htmlFor='city'> City</label>
                     <input type="text" name="city" id="city" className="form-control mb-2" value={city} onChange={e => setCity(e.target.value)}  />
-                    <label htmlFor='stateUS'> State</label>
-                    <input type="text" name="stateUS" id="stateUS" className="form-control mb-2" value={stateUS} onChange={e => setStateUS(e.target.value)}  />
+                    <label htmlFor='US'> State</label>
+                    <input type="text" name="US" id="US" className="form-control mb-2" value={stateUS} onChange={e => setUS(e.target.value)}  />
                     <label htmlFor='zipcode'> Zipcode</label>
                     <input type="text" name="zipcode" id="zipcode" className="form-control mb-2" value={zipcode} onChange={e => setZipcode(e.target.value)}  />
                     <label htmlFor='phone'> Phone</label>

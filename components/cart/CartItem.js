@@ -33,27 +33,19 @@ const CartItem = ({item, dispatch, cart}) => {
             </td> */}
             <td className='align-middle' style={{cursor: 'pointer'}} >
                     
-            <i className="fas fa-plus-circle mt-2 text-success" 
+            <button className='btn btn-outline-success' style={{borderRadius: '40px'}} 
                         onClick={() => dispatch(increase(cart, item._id)) } 
-                        disabled={ item.quantity === item.inStock ? true : false } 
-                        style={{fontSize: '1.5rem'}} 
-                        ></i>
-                    {/* <button className='btn btn-outline-success mt-2' style={{borderRadius: '40px'}} 
-                        onClick={() => dispatch(increase(cart, item._id)) } 
-                        disabled={ item.quantity === item.inStock ? true : false }
-                    ></button> */}
-                    <span className='text-info p-1 mx-2' style={{fontWeight: '700', fontSize: '1.5rem'}}>{item.quantity}</span>
-                    {/* <button className='btn btn-outline-warning mb-2' style={{borderRadius: '40px'}} 
-                        onClick={() => dispatch(decrease(cart, item._id)) } 
-                        disabled={ item.quantity <= 1 ? true : false }
-                        ></button> */}
-                    <i className="fas fa-minus-circle mb-2 text-warning" 
-                            onClick={() => dispatch(decrease(cart, item._id)) } 
-                            style={{fontSize: '1.5rem'}} 
-                            disabled={ item.quantity <= 1 ? true : false }
-                            ></i>
+                        disabled={ item.quantity === item.inStock ? true : false }>
+                <i className="fas fa-plus-circle" ></i>
+            </button>
+            <span className='text-info align-middle mx-2 px-2' style={{fontWeight: '700'}}>{item.quantity}</span>
+            <button className='btn btn-outline-warning' style={{borderRadius: '40px'}} 
+                onClick={() => dispatch(decrease(cart, item._id)) } 
+                disabled={ item.quantity <= 1 ? true : false }
+                > <i className="fas fa-minus-circle"></i></button>
+                   
             </td>
-            <td className='align-middle' style={{ cursor: 'pointer' }} >
+            <td className='align-middle' style={{ cursor: 'pointer', }} >
             <i className="fas fa-trash text-danger" 
                 style={{fontSize: '1.5rem'}}
                 onClick={() => dispatch(({

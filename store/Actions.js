@@ -3,7 +3,6 @@ export const ACTIONS = {
     AUTH: 'AUTH',
     ADD_CART: 'ADD_CART',
     ADD_MODAL: 'ADD_MODAL',
-
 }
 
 export const addToCart = (product, cart) => {
@@ -15,10 +14,9 @@ export const addToCart = (product, cart) => {
         })
 
         if(!check) return({ type: 'NOTIFY', payload: {error: 'The product is already in your basket.'}})
-      
-        return ({ type: 'ADD_CART', payload: [...cart, {...product, quantity: 1}]}) 
-
-    
+        return (
+            { type: 'ADD_CART', payload: [...cart, {...product, quantity: 1}] }
+            )
 }
 
 export const decrease = (data, id) => {

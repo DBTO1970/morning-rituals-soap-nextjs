@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useState, useContext } from 'react'
 import { getData } from '../../utils/fetchData'
 import {DataContext } from '../../store/GlobalState'
@@ -13,6 +15,7 @@ const ProductDetail = (props) => {
 
     const { state, dispatch } = useContext(DataContext)
     const { cart } = state
+    const router = useRouter()
 
     const isActive = (index) => {
         if(tab === index) return " active";
@@ -63,8 +66,8 @@ const ProductDetail = (props) => {
             <div className="row justify-content-between mx-0" style={{marginTop: '20px'}}>
            
             <Link href={'/products/'}>
-                <a className='btn btn-info' 
-                    style={{marginRight: '5px', flex: 1}}><i className="fas fa-arrow-left"></i> Back</a>
+                <button className='btn btn-info' 
+                    style={{marginRight: '5px', flex: 1}} onClick={() => router.back()}><i className="fas fa-arrow-left"></i> Back</button>
             </Link>
             {/* <button><a className='btn btn-info' 
                     style={{marginRight: '5px', flex: 1}}><i className="fas fa-arrow-left" onClick={router.back()}></i> Back</a></button> */}

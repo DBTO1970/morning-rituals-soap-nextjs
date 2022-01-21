@@ -115,15 +115,15 @@ a:hover {
 .card:hover,
 .card:focus,
 .card:active {
-  /* color: #0070f3; */
-  border-color: #0070f3;
+  /*color: #0070f3;
+  */border-color: #0070f3;
   transform: scale(1.02) margin(.2px);
-  -webkit-transform: scale(1.02);
+  -webkit-transform: scale(1.02) margin(.2px);
   -moz-transform: scale(1.02) margin(.2px);
   -ms-transform: scale(1.02) margin(.2px);
   -o-transform: scale(1.02) margin(.2px);
-
 }
+
 
 .card h2 {
   margin: 0 0 1rem 0;

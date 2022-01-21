@@ -56,7 +56,7 @@ const Cart = () => {
 
     const handlePayment = () => {
         if(!address || !phone)
-        return dispatch({ type: 'NOTIFY', payload: {err: 'Please complete shipping information'}})
+        return dispatch({ type: 'NOTIFY', payload: {error: 'Please complete shipping information'}})
         setPayment(true)
     }
 
@@ -68,7 +68,7 @@ const Cart = () => {
 
     return (
         <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
-            <div className='row mx-auto item' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
+            <div className='row mx-auto item' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}} >
             <Head>
                 <title>Basket</title>
             </Head>
@@ -109,9 +109,11 @@ const Cart = () => {
                         state={state} 
                         dispatch={dispatch}
                     />
-                    : <Link href={auth.user ? '#' : '/signin'}>
-                    <a className='btn btn-dark my-2' onClick={handlePayment} >Proceed to checkout</a>
-                </Link>
+                    : <Link href={auth.user ? '#!' : '/signin'}>
+                        <a className='btn btn-dark my-2' onClick={handlePayment} >
+                            Proceed with payment
+                        </a>
+                    </Link>
                 }
                 
             </div>

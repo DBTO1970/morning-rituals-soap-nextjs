@@ -23,10 +23,10 @@ const PaypalBtn = ({total, address, phone, state, dispatch}) => {
             // Finalize the transaction after payer approval
             onApprove: function(data, actions) {
 
-              return actions.order.capture().then(function(details) {
+              return actions.order.capture().then(function() {
                 postData('order', { address, phone, cart, total }, auth.token)
                 .then(res => {
-                  if(res.err) return deispathc({type: 'NOTIFY', payload: { error: res.err}})
+                  if(res.err) return dispatch({type: 'NOTIFY', payload: { error: res.err}})
 
                   dispatch ({ type: 'ADD_CART', payload: [] })
                   return dispatch({type: 'NOTIFY', payload: { success: res.msg}})

@@ -14,9 +14,9 @@ const Cart = () => {
     const [total, setTotal] = useState(0)
 
     const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [stateUS, setUS] = useState('')
-    const [zipcode, setZipcode] = useState('')
+    // const [city, setCity] = useState('')
+    // const [stateUS, setUS] = useState('')
+    // const [zipcode, setZipcode] = useState('')
     const [phone, setPhone] = useState('')
     const [payment, setPayment] = useState(false)
 
@@ -39,10 +39,10 @@ const Cart = () => {
             const updateCart = async () => {
                 for (const item of cartLocal) {
                     const res = await getData(`product/${item._id}`)
-                    const { _id, name, images, price, inStock } = res.product 
+                    const { _id, name, images, price, inStock, sold } = res.product 
                     if(inStock > 0) {
                         newArr.push({ 
-                            _id, name, images, price, inStock, 
+                            _id, name, images, price, inStock, sold, 
                             quantity: item.quantity > inStock ? 1 : item.quantity 
                         })
                     }
@@ -90,12 +90,12 @@ const Cart = () => {
                     <h2>Shipping Details</h2>
                     <label htmlFor='address'> Address</label>
                     <input type="text" name="address" id="address" className="form-control mb-2" value={address} onChange={e => setAddress(e.target.value)} />
-                    <label htmlFor='city'> City</label>
+                    {/* <label htmlFor='city'> City</label>
                     <input type="text" name="city" id="city" className="form-control mb-2" value={city} onChange={e => setCity(e.target.value)}  />
                     <label htmlFor='US'> State</label>
                     <input type="text" name="US" id="US" className="form-control mb-2" value={stateUS} onChange={e => setUS(e.target.value)}  />
                     <label htmlFor='zipcode'> Zipcode</label>
-                    <input type="text" name="zipcode" id="zipcode" className="form-control mb-2" value={zipcode} onChange={e => setZipcode(e.target.value)}  />
+                    <input type="text" name="zipcode" id="zipcode" className="form-control mb-2" value={zipcode} onChange={e => setZipcode(e.target.value)}  /> */}
                     <label htmlFor='phone'> Phone</label>
                     <input type="tel" name="phone" id="phone" className="form-control mb-2" value={phone} onChange={e => setPhone(e.target.value)}  />
                 </form>

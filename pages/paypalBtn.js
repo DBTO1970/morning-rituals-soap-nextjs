@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react" 
+import { postData } from '../utils/fetchData';
+
 
 const PaypalBtn = ({total, address, phone, state, dispatch}) => {
     const refPaypalBtn = useRef()
@@ -20,12 +22,17 @@ const PaypalBtn = ({total, address, phone, state, dispatch}) => {
     
             // Finalize the transaction after payer approval
             onApprove: function(data, actions) {
-              return actions.order.capture().then(function(orderData) {
-                // Successful capture! For dev/demo purposes:
-                    console.log(data);
-                    var transaction = orderData.purchase_units[0].payments.captures[0];
-                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-    
+
+              return actions.order.capture().then(function(details) {
+                postData('order', { address, phone, cart, total }, auth.token)
+                .then(res => {
+                  if(res.err) return deispathc({type: 'NOTIFY', payload: { error: res.err}})
+
+                  dispatch ({ type: 'ADD_CART', payload: [] })
+                  return dispatch({type: 'NOTIFY', payload: { success: res.msg}})
+                })
+                
+              
                 // When ready to go live, remove the alert and show a success message within this page. For example:
                 // var element = document.getElementById('paypal-button-container');
                 // element.innerHTML = '';
@@ -34,7 +41,7 @@ const PaypalBtn = ({total, address, phone, state, dispatch}) => {
               });
             }
           }).render(refPaypalBtn.current);
-    }, [total])
+    }, [])
 
     
     return(

@@ -6,13 +6,13 @@ import Footer from './Footer'
 
 function Layout({children}) {
     return (
-        <React.Fragment>
+        <div className='container'>
             <NavBar />
             <Notify />
             <Modal />
             {children}
             <Footer />
-        </React.Fragment>
+        </div>
     )
 }
 

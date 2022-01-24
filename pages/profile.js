@@ -2,6 +2,9 @@ import Head from 'next/head'
 import { useState, useContext, useEffect} from 'react'
 import { DataContext } from '../store/GlobalState'
 
+import valid from '../utils/valid'
+import { patchData } from '../utils/fetchData'
+
 const Profile = ()=> {
     const initialState = {
         avatar: '',
@@ -23,6 +26,31 @@ const Profile = ()=> {
 
     if(!auth.user) return null;
 
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setData({...data, [name]: value})
+        dispatch({type: 'NOTIFY', payload: {}})
+    }
+
+    const handleUpdateProfile = e => {
+        e.preventDefault()
+        if(password) {
+            const errMsg = valid(name, auth.user.email, password, cf_password)
+            if(errMsg) return dispatch({type: 'NOTIFY', payload: {error: errMsg}})
+            updatePassword()
+
+        } 
+    }
+
+    const updatePassword = () => {
+        dispatch({ type: 'NOTIFY', payload: {loading: true} })
+        patchData('user/resetPassword', {password}, auth.token)
+        .then(res => {
+            if(res.err) return dispatch({ type: "NOTIFY", payload: {error: res.err} })
+            return dispatch({ type: "NOTIFY", payload: {success: res.msg} })
+        })
+
+    }
 
     return(
         <div className='profile_page' style={{paddingTop: '100px' }}>
@@ -46,22 +74,52 @@ const Profile = ()=> {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='name'>Name</label>
-                        <input type="text" name="name" value={name} className="form-control" placeholder="Your name" />
+                        <input 
+                            type="text" 
+                            name="name" 
+                            value={name} 
+                            className="form-control" 
+                            placeholder="Your name" 
+                            onChange={handleChange} />
                         
                     </div>
                     <div className='form-group'>
                         <label htmlFor='email'>Email</label>
-                        <input type="text" name="email" defaultValue={auth.user.email} className="form-control" placeholder="Your email" disabled="true" />
+                        <input 
+                            type="text" 
+                            name="email" 
+                            defaultValue={auth.user.email} 
+                            className="form-control" 
+                            placeholder="Your email" 
+                            disabled={true} 
+                        />
                     </div>
                     <div className='form-group'>
                         <label htmlFor='password'>New Password</label>
-                        <input type="text" name="password" defaultValue={password} className="form-control" placeholder="Your new password" disabled="true" />
+                        <input 
+                            type="password" 
+                            name="password" 
+                            defaultValue={password} 
+                            className="form-control" 
+                            placeholder="Your new password" 
+                            onChange={handleChange} 
+                        />
                     </div>
                     <div className='form-group'>
                         <label htmlFor='cf_password'>Confirm Password</label>
-                        <input type="text" name="cf_password" defaultValue={cf_password} className="form-control" placeholder="Confirm new password" disabled="true" />
+                        <input 
+                            type="password" 
+                            name="cf_password" 
+                            defaultValue={cf_password} 
+                            className="form-control" 
+                            placeholder="Confirm new password" 
+                            onChange={handleChange} 
+                        />
                     </div>
-                    <button className="btn btn-info" disabled={notify.loading}>
+                    <button 
+                        className="btn btn-info" 
+                        disabled={notify.loading} 
+                        onClick={handleUpdateProfile}>
                         Update
                     </button>
                 </div>

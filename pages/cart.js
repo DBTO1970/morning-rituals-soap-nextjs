@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React, { useContext, useState, useEffect } from 'react'
 import { DataContext } from '../store/GlobalState'
+import { useRouter } from 'next/router'
 import CartItem from '../components/cart/CartItem'
 import { getData } from '../utils/fetchData'
 import PaypalBtn from './paypalBtn'
@@ -19,6 +20,7 @@ const Cart = () => {
     // const [zipcode, setZipcode] = useState('')
     const [phone, setPhone] = useState('')
     const [payment, setPayment] = useState(false)
+    const router = useRouter()
 
     useEffect(()=>{
         const getTotal = () => {
@@ -61,9 +63,18 @@ const Cart = () => {
     }
 
 
-    if(cart.length === 0) return (<div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
+    if(cart.length === 0) return (
+    <div style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
         <h2>Your basket is empty</h2>
-        <img className="img-responsive" style={{height: 'auto', width:'100%', borderRadius: '50px'}} src="/empty_basket.jpg" alt="empty_basket.jpg" />
+        <div>
+            <Link href={'/products/'}>
+                <button className='btn btn-info' 
+                style={{}} onClick={() => router.back()}><i className="fas fa-arrow-left"></i> Keep Browsing </button>
+            </Link>
+        </div>
+        
+        <img className="img-responsive" style={{height: 'auto', width:'80%', borderRadius: '50px'}} src="/empty_basket.jpg" alt="empty_basket.jpg" />
+            
     </div>)
 
     return (

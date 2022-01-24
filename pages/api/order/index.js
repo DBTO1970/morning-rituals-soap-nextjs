@@ -13,6 +13,28 @@ export default async (req, res) => {
         case "POST":
             await createOrder(req, res)
             break;
+        case "GET":
+            await getOrders(req, res)
+            break;
+    }
+}
+
+const getOrders = async (req, res) => {
+    try {
+        const result = await auth(req, res)
+
+        let orders;
+        if(result.role !== 'admin') {
+            orders = await Orders.find({user: result.id}).populate("user", "-password")
+        } else {
+            orders = await Orders.find().populate("user", "-password")
+        }
+
+        res.json({orders})
+
+    } catch (err){ 
+        return res.status(500).json({err: err.message})
+
     }
 }
 
@@ -24,12 +46,13 @@ const createOrder = async (req, res) => {
         const newOrder = new Orders({
             user: result.id, address, phone, cart, total
         })
-        console.log(cart)
+        
         cart.filter(item => {
             return sold(item._id, item.quantity, item.InStock, item.sold)
         })
         
         await newOrder.save()
+
         res.json({
             msg: 'Payment successful!  We will send shipping confirmation to email provided',
             newOrder

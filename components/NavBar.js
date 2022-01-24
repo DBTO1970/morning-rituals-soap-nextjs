@@ -40,7 +40,7 @@ function NavBar() {
                     <span className="user-name">{auth.user.name}</span>
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <Link href="#">
+            <Link href="/profile">
                 <a className="dropdown-item">Profile</a>
             </Link>
            
@@ -55,7 +55,7 @@ function NavBar() {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light xs-12 fixed-top" style={{backgroundImage: `url('./coffee_beans_banner.jpg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height:'auto'}}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light xs-12 fixed-top" style={{backgroundImage: `url('./coffee_beans_banner.jpg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height:'auto' }}>
         <Link href="/">
             <a className="navbar-brand" style={{color: 'white'}}><h1>Morning Rituals Soap</h1></a>
         </Link>

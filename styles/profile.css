@@ -1,0 +1,11 @@
+
+.profile_page .avatar {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    margin: 15px auto;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 50%;
+}

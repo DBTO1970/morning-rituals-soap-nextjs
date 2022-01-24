@@ -223,10 +223,8 @@ img {
 
 
 /* ----- from Home.module.css -----*/
-.container {
-  padding: 0 2rem;
-  
-}
+@import url("./Home.module.css");
 
-
+/* ------------ Profile ----------------*/
+@import url("./profile.css");
  

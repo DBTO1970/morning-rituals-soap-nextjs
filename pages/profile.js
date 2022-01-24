@@ -4,6 +4,7 @@ import { DataContext } from '../store/GlobalState'
 
 import valid from '../utils/valid'
 import { patchData } from '../utils/fetchData'
+import { imageUpload } from '../utils/ImageUpload'
 
 const Profile = ()=> {
     const initialState = {
@@ -40,6 +41,7 @@ const Profile = ()=> {
             updatePassword()
 
         } 
+        if(name !== auth.user.name || avatar) updateInfor()
     }
 
     const updatePassword = () => {
@@ -50,6 +52,28 @@ const Profile = ()=> {
             return dispatch({ type: "NOTIFY", payload: {success: res.msg} })
         })
 
+    }
+
+    const changeAvatar = (e) => {
+        const file = e.target.files[0]
+        if(!file) 
+            {return dispatch({type: 'NOTIFY', payload:{ error: 'File does not exist.'}})}
+
+        if(file.size > 1024 * 1024) // 1mb file size limit 
+           { return dispatch({type: 'NOTIFY', payload:{ error: 'Image size limit is 1mb.'}})}
+
+        if(file.type !== "image/jpeg" && file.type !== "image/png")  
+           { return dispatch({type: 'NOTIFY', payload:{ error: 'File format is incorrect.'}})}
+        
+        setData({...data, avatar: file})
+
+    }
+
+    const updateInfor = async () => {
+        let media
+        dispatch({type: 'NOTIFY', payload: {loading: true}})
+
+        if(avatar) media = await imageUpload([avatar])
     }
 
     return(
@@ -64,11 +88,19 @@ const Profile = ()=> {
                     </h3>
                         
                     <div className='avatar'>
-                        <img src={auth.user.avatar} alt={auth.user.avatar} />
+                        <img 
+                            src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar} 
+                            alt="avatar" />
                         <span>
                             <i className='fas fa-camera'></i>
                             <p>Change</p>
-                            <input type="file" name="file" id="file_up" />
+                            <input 
+                                type="file" 
+                                name="file" 
+                                id="file_up" 
+                                accept='image/*'
+                                onChange={changeAvatar}
+                            />
                             
                         </span>
                     </div>

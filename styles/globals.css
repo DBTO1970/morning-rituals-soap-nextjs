@@ -212,6 +212,12 @@ img {
   box-shadow: 5px 5px 5px lightgray;
 }
 
+.back_btn {
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
 /* ------------ Loading ----------------*/
 @import url("./loading.css");
 

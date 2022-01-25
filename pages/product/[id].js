@@ -23,7 +23,7 @@ const ProductDetail = (props) => {
     }
    
     return (
-        <div className='row detail_page' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
+        <div className='row detail_page'>
             <Head>
                 <title>Product Details</title>
             </Head>
@@ -44,7 +44,7 @@ const ProductDetail = (props) => {
                 </div>
             </div>
             <div className='col-md-6'>
-                <h1>{product.name}</h1>
+                <h2>{product.name}</h2>
                     <h6>{product.description}</h6>
                     <hr />
                 <h5>Ingredient List</h5>
@@ -57,7 +57,7 @@ const ProductDetail = (props) => {
                             <h6 className="text-danger">In Stock: {product.inStock} </h6> :
                             <div>
                             <h6 className="text-danger"> Out of Stock</h6>
-                            {/* <h6 className="text-danger small"> This batch will be ready on {product.dateReady}</h6> */}
+                         
                             </div>
                             
                         }
@@ -65,12 +65,11 @@ const ProductDetail = (props) => {
                 
             <div className="row justify-content-between mx-0" style={{marginTop: '20px'}}>
            
-            <Link href={'/products/'}>
-                <button className='btn btn-info' 
+            <Link href={'/products/'} passHref >
+                <button className='btn btn-dark' 
                     style={{marginRight: '5px', flex: 1}} onClick={() => router.back()}><i className="fas fa-long-arrow-alt-left"></i> Back</button>
             </Link>
-            {/* <button><a className='btn btn-info' 
-                    style={{marginRight: '5px', flex: 1}}><i className="fas fa-arrow-left" onClick={router.back()}></i> Back</a></button> */}
+           
             <button className='btn btn-success'
                 style={{marginLeft: '5px', flex: 1}} 
                 disabled={product.inStock === 0 ? true : false }

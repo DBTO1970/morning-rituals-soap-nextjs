@@ -1,11 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
+// import Image from 'next/image'
 import { increase, decrease } from '../../store/Actions'
 
 const CartItem = ({item, dispatch, cart}) => {
     return (
         <tr>
             <td style={{width: '100px', overflow: 'hidden'}} >
+                {/* <Image 
+                    src={item.images[0].url} 
+                    alt={item.images[0].url} 
+                    className="img-thumbnail w-100"
+                    width={500} 
+                    height={500}
+                /> */}
                 <img 
                     src={item.images[0].url} 
                     alt={item.images[0].url} 
@@ -28,9 +36,7 @@ const CartItem = ({item, dispatch, cart}) => {
                     }
                 
             </td>
-            {/* <td>
-                    
-            </td> */}
+          
             <td className='align-middle' style={{cursor: 'pointer'}} >
                     
             <button className='btn btn-outline-success' style={{borderRadius: '40px'}} 

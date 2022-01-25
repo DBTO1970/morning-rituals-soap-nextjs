@@ -5,9 +5,9 @@ import ProductItem from '../components/product/ProductItem'
 function Products(props) {
     const [products, setProducts] = useState(props.products)
     return (
-        <React.Fragment>
-          <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem' }}>
-            <h1 className='xs-12'>Soap</h1>
+        
+          <div className='container' >
+            <h2 className='xs-12'>Soap</h2>
             <hr/>
               <div className='products'>
                 {
@@ -19,7 +19,6 @@ function Products(props) {
                 }
             </div>
           </div>
-        </React.Fragment>
         
       
     )

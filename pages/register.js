@@ -43,12 +43,12 @@ const Register = () => {
     }, [auth])
 
     return(
-        <div style={{margin: '2rem' }}>
+        <div>
             <Head>
                 <title>Registration Page</title>
             </Head>
-            <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
-            <h1 className='xs-12'>Register</h1>
+            <div className='container' >
+            <h2 className='xs-12'>Register</h2>
             <hr/>
              <form className='mx-auto my-4' style={{maxWidth: '500px'}} onSubmit={handleSubmit}>
                 <div className='form-group'>

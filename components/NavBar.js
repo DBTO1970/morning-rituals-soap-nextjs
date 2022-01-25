@@ -55,9 +55,9 @@ function NavBar() {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light xs-12 " style={{backgroundImage: `url('./coffee_beans_banner.jpg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height:'auto' }}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light xs-12" style={{backgroundImage: `url('./coffee_beans_banner.jpg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height:'auto' }}>
         <Link href="/">
-            <a className="navbar-brand" style={{color: 'white'}}><h1>Morning Rituals Soap</h1></a>
+            <a className="navbar-brand text-light" ><h1>Morning Rituals Soap</h1></a>
         </Link>
             
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style={{color: 'white'}} >

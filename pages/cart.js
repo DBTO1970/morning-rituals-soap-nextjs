@@ -1,25 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
+
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { useContext, useState, useEffect } from 'react'
 import { DataContext } from '../store/GlobalState'
 import { useRouter } from 'next/router'
 import CartItem from '../components/cart/CartItem'
-import { getData } from '../utils/fetchData'
-import PaypalBtn from './paypalBtn'
+import { getData, postData } from '../utils/fetchData'
+import Image from 'next/image'
 
 const Cart = () => {
     const { state, dispatch } = useContext(DataContext)
-    const { cart, auth } = state
+    const { cart, auth, orders } = state
 
     const [total, setTotal] = useState(0)
-
+    
     const [address, setAddress] = useState('')
     // const [city, setCity] = useState('')
     // const [stateUS, setUS] = useState('')
     // const [zipcode, setZipcode] = useState('')
     const [phone, setPhone] = useState('')
-    const [payment, setPayment] = useState(false)
+
+
+
+    const [callback, setCallback] = useState(false)
     const router = useRouter()
 
     useEffect(()=>{
@@ -44,7 +48,7 @@ const Cart = () => {
                     const { _id, name, images, price, inStock, sold } = res.product 
                     if(inStock > 0) {
                         newArr.push({ 
-                            _id, name, images, price, inStock, sold, 
+                            _id, name, images, price, inStock: item.inStock - item.quantity, sold: item.sold + item.quantity, 
                             quantity: item.quantity > inStock ? 1 : item.quantity 
                         })
                     }
@@ -54,32 +58,70 @@ const Cart = () => {
             }
             updateCart()
         }
-    }, [dispatch])
+    }, [callback])
 
-    const handlePayment = () => {
+    const handlePayment = async () => {
         if(!address || !phone)
-        return dispatch({ type: 'NOTIFY', payload: {error: 'Please complete shipping information'}})
-        setPayment(true)
+        return dispatch({ type: 'NOTIFY', payload: {error: 'Please complete shipping information.'}})
+
+        let newCart = [];
+        for(const item of cart) {
+            const res = await getData(`product/${item._id}`)
+            if(res.product.inStock - item.quantity >= 0) {
+                newCart.push(item)
+            }
+        }
+        
+        if(newCart.length < cart.length) {
+            setCallback(!callback)
+            return dispatch({ type: 'NOTIFY', payload: {error: 'The product is out of stock or limited in quantity.'}})
+        }
+
+        dispatch({ type: 'NOTIFY', payload: {loading: true}})
+        postData('order', {address, phone, cart, total}, auth.token)
+        .then(res => {
+            if(res.err) return dispatch({ type: 'NOTIFY', payload: {error: res.err}})
+            dispatch({ type: 'ADD_CART', payload: []})
+
+            const newOrder = {
+                ...res.newOrder,
+                user: auth.user
+            }
+            dispatch({ type: 'ADD_ORDERS', payload: [...orders, newOrder] })
+            dispatch({ type: 'NOTIFY', payload: {success: res.msg}})
+            return router.push(`/order/${res.newOrder._id}`)
+        })
     }
 
-
     if(cart.length === 0) return (
-    <div style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
-        <h2>Your basket is empty</h2>
-        <div>
-            <Link href={'/products/'}>
-                <button className='btn btn-info' 
-                style={{}} onClick={() => router.back()}><i className="fas fa-arrow-left"></i> Keep Browsing </button>
-            </Link>
-        </div>
-        
-        <img className="img-responsive" style={{height: 'auto', width:'80%', borderRadius: '50px'}} src="/empty_basket.jpg" alt="empty_basket.jpg" />
+    <div clasName='container' >
+        <h2 className='text-center'>Your basket is empty</h2>
+        <div className='back_btn'>
             
-    </div>)
+        </div>
+            <div style={{width: "50vw", height: "50vh", marginLeft: 'auto', marginRight: 'auto'}} >
+            <Link href={'/products/'} passHref >
+                <button className='btn btn-dark mx-auto my-2' onClick={() => router.push('/products/')}><i className="fas fa-arrow-left"></i> Keep Browsing </button>
+            </Link>
+            {/* <Image className="center-block" 
+                height= {50}
+                width= {50}
+                src="/empty_basket.jpg" alt="empty_basket.jpg" 
+                layout="responsive"
+                /> */}
+               
+            <img className="img-responsive" style={{height: 'auto', width:'80%', borderRadius: '50px'}} src="/empty_basket.jpg" alt="empty_basket.jpg" />
+            </div>
+            
+            
+        
+        
+    </div>
+    )
 
     return (
-        <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem' }} >
-            <div className='row mx-auto item' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}} >
+        <div className='container' >
+            <div className='row mx-auto item' >
             <Head>
                 <title>Basket</title>
             </Head>
@@ -111,21 +153,12 @@ const Cart = () => {
                     <input type="tel" name="phone" id="phone" className="form-control mb-2" value={phone} onChange={e => setPhone(e.target.value)}  />
                 </form>
                 <h3>Order Total: <span className='text-info'>${total}</span></h3>
-                {
-                    payment 
-                    ? <PaypalBtn 
-                        total={total} 
-                        address={address} 
-                        phone={phone} 
-                        state={state} 
-                        dispatch={dispatch}
-                    />
-                    : <Link href={auth.user ? '#!' : '/signin'}>
-                        <a className='btn btn-dark my-2' onClick={handlePayment} >
-                            Proceed with payment
-                        </a>
-                    </Link>
-                }
+                <Link href={auth.user ? '#!' : '/signin'}>
+                    <a className='btn btn-dark my-2' onClick={handlePayment} >
+                        Proceed with payment
+                    </a>
+                </Link>
+                
                 
             </div>
             

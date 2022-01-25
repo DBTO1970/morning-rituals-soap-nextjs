@@ -1,7 +1,8 @@
 module.exports = {
   reactStrictMode: true,
   // images: {
-  //   domains: ['res.cloudinary.com/morning-rituals-soap/image/upload/'],
+  //   // domains: ['res.cloudinary.com/'],
+
   // },
   env: {
     "BASE_URL": "http://localhost:3000",

@@ -23,7 +23,7 @@ const ProductDetail = (props) => {
     }
    
     return (
-        <div className='row detail_page' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}}>
+        <div className='row detail_page' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}}>
             <Head>
                 <title>Product Details</title>
             </Head>
@@ -67,7 +67,7 @@ const ProductDetail = (props) => {
            
             <Link href={'/products/'}>
                 <button className='btn btn-info' 
-                    style={{marginRight: '5px', flex: 1}} onClick={() => router.back()}><i className="fas fa-arrow-left"></i> Back</button>
+                    style={{marginRight: '5px', flex: 1}} onClick={() => router.back()}><i className="fas fa-long-arrow-alt-left"></i> Back</button>
             </Link>
             {/* <button><a className='btn btn-info' 
                     style={{marginRight: '5px', flex: 1}}><i className="fas fa-arrow-left" onClick={router.back()}></i> Back</a></button> */}
@@ -78,6 +78,7 @@ const ProductDetail = (props) => {
                 <i 
                     className="fas fa-shopping-basket" 
                     style={{margin: '0 5px'}} 
+                    aria-hidden="true" 
                     ></i>  
                 Add to Basket
             </button>

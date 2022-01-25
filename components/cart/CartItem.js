@@ -36,13 +36,13 @@ const CartItem = ({item, dispatch, cart}) => {
             <button className='btn btn-outline-success' style={{borderRadius: '40px'}} 
                         onClick={() => dispatch(increase(cart, item._id)) } 
                         disabled={ item.quantity === item.inStock ? true : false }>
-                <i className="fas fa-plus-circle" ></i>
+                <i className="fas fa-plus-circle" aria-hidden="true" ></i>
             </button>
             <span className='text-info align-middle mx-2 px-2' style={{fontWeight: '700'}}>{item.quantity}</span>
             <button className='btn btn-outline-warning' style={{borderRadius: '40px'}} 
                 onClick={() => dispatch(decrease(cart, item._id)) } 
                 disabled={ item.quantity <= 1 ? true : false }
-                > <i className="fas fa-minus-circle"></i></button>
+                > <i className="fas fa-minus-circle" aria-hidden="true" ></i></button>
                    
             </td>
             <td className='align-middle' style={{ cursor: 'pointer', }} >
@@ -57,7 +57,7 @@ const CartItem = ({item, dispatch, cart}) => {
                     }
                 }))} 
                 data-toggle="modal" data-target="#deleteItemModal" 
-
+                aria-hidden="true" 
                 ></i>
             {/* <button className='btn btn-outline-danger m-1' style={{borderRadius: '20%'}} 
                 data-toggle="modal" data-target="#exampleModal" 

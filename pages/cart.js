@@ -78,7 +78,7 @@ const Cart = () => {
     </div>)
 
     return (
-        <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem', paddingTop: '100px'}} >
+        <div className='container' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem' }} >
             <div className='row mx-auto item' style={{alignContent: 'center', justifyContent: 'center', margin: '2rem'}} >
             <Head>
                 <title>Basket</title>

@@ -181,11 +181,8 @@ img {
   color: 'white';
   background-color: 'black';
   background-image: url('../public/coffee_beans_banner.jpg');
-  /* top: 0;
-  position: sticky;
-  z-index: 9; */
   width: 100%;
- margin: 0 auto;
+  margin: 0 auto;
   
 
 }

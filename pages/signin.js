@@ -53,7 +53,7 @@ function Signin() {
     }, [auth])
 
     return (
-        <div style={{margin: '2rem', paddingTop: '100px'}}>
+        <div style={{margin: '2rem' }}>
             <Head>
                 <title>Sign-In Page</title>
             </Head>

@@ -1,10 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
+import Link from 'next/link'
 import { useState, useContext, useEffect} from 'react'
 import { DataContext } from '../store/GlobalState'
 
 import valid from '../utils/valid'
 import { patchData } from '../utils/fetchData'
 import { imageUpload } from '../utils/ImageUpload'
+
 
 const Profile = ()=> {
     const initialState = {
@@ -19,7 +22,7 @@ const Profile = ()=> {
 
 
     const { state, dispatch } = useContext(DataContext)
-    const { auth, notify } = state
+    const { auth, notify, orders } = state
 
     useEffect(() => {
         if(auth.user) setData({...data, name: auth.user.name })
@@ -90,7 +93,7 @@ const Profile = ()=> {
     if(!auth.user) return null;
 
     return(
-        <div className='profile_page' style={{paddingTop: '100px' }}>
+        <div className='profile_page' >
             <Head>
                 <title>Profile</title>
             </Head>
@@ -105,7 +108,7 @@ const Profile = ()=> {
                             src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar} 
                             alt="avatar" />
                         <span>
-                            <i className='fas fa-camera'></i>
+                            <i className='fas fa-camera' aria-hidden="true" ></i>
                             <p>Change</p>
                             <input 
                                 type="file" 
@@ -169,7 +172,46 @@ const Profile = ()=> {
                     </button>
                 </div>
                 <div className='col-md-8'>
-                    <h3>Orders</h3>
+                    <h3 className='text-uppercase'>Orders</h3>
+                    <div className='my-3 table-responsive'>
+                        <table className='table-bordered table-hover w-100 text-uppercase'
+                            style={{minWidth: '600px', cursor: 'pointer'}}>
+                            <thead className='bg-light font-weight-bold'>
+                                <tr>
+                                    <td className='p-2'>id</td>
+                                    <td className='p-2'>date</td>
+                                    <td className='p-2'>total</td>
+                                    <td className='p-2'>delivered</td>
+                                    <td className='p-2'>action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    orders.map(order => (
+                                        // eslint-disable-next-line react/jsx-key
+                                        <tr key={order._id}>
+                                            <td className='p-2'>{order._id}</td>
+                                            <td className='p-2'>
+                                                {new Date(order.createdAt).toLocaleDateString()}</td>
+                                            <td className='p-2'>${order.total}</td>
+                                            <td className='p-2'>{
+                                                order.delivered 
+                                                ? <i className='fas fa-check text-success' aria-hidden="true" ></i>
+                                                : <i className='fas fa-times text-danger' aria-hidden="true" ></i>
+                                                }
+                                            </td>
+                                            <td className='p-2'>
+                                                <Link href={`/order/${order._id}`} >
+                                                    <a>details</a>
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                        
+                    </div>
                 </div>
             </section>
         </div>

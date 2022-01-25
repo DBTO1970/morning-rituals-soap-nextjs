@@ -25,8 +25,6 @@ const Profile = ()=> {
         if(auth.user) setData({...data, name: auth.user.name })
     }, [auth.user])
 
-    if(!auth.user) return null;
-
     const handleChange = (e) => {
         const { name, value } = e.target
         setData({...data, [name]: value})
@@ -70,11 +68,26 @@ const Profile = ()=> {
     }
 
     const updateInfor = async () => {
-        let media
+        let media;
         dispatch({type: 'NOTIFY', payload: {loading: true}})
 
         if(avatar) media = await imageUpload([avatar])
+
+        patchData('user', {
+            name, avatar: avatar ? media[0].url : auth.user.avatar
+        }, auth.token).then(res => {
+            if(res.err) return dispatch({type: 'NOTIFY', payload: { error: res.err}})
+
+            dispatch({type: "AUTH", payload: {
+                token: auth.token,
+                user: res.user
+            }})
+            return dispatch({type: 'NOTIFY', payload: {success: res.msg}})
+        })
+
     }
+
+    if(!auth.user) return null;
 
     return(
         <div className='profile_page' style={{paddingTop: '100px' }}>

@@ -11,6 +11,6 @@ module.exports = {
     "PAYPAL_CLIENT_ID": "AZDEhL756HUw1Yf4moZFYoW5uBE25aUGdXNrZTDkDQZ8Vi6ytgObfMoRC02jARRY08UEsbM_lLANjgNP",
     "CLOUD_UPDATE_PRESET": "mrs_nextjs_store",
     "CLOUD_NAME": "morning-rituals-soap",
-    "CLOUD_API": "POST https://api.cloudinary.com/v1_1/morning-rituals-soap/image/upload"
+    "CLOUD_API": "https://api.cloudinary.com/v1_1/morning-rituals-soap/image/upload"
   }
 }

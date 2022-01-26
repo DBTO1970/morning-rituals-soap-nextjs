@@ -49,7 +49,7 @@ const Register = () => {
             </Head>
             <div className='container' >
             <h2 className='xs-12'>Register</h2>
-            <hr/>
+
              <form className='mx-auto my-4' style={{maxWidth: '500px'}} onSubmit={handleSubmit}>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Name</label>

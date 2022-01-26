@@ -67,7 +67,7 @@ const ProductDetail = (props) => {
            
             <Link href={'/products/'} passHref >
                 <button className='btn btn-dark' 
-                    style={{marginRight: '5px', flex: 1}} onClick={() => router.back()}><i className="fas fa-long-arrow-alt-left"></i> Back</button>
+                    style={{marginRight: '5px', flex: 1}} onClick={() => router.back()}><i className="fas fa-arrow-left"></i> Back</button>
             </Link>
            
             <button className='btn btn-success'

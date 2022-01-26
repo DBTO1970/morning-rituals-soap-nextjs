@@ -8,7 +8,7 @@ function Products(props) {
         
           <div className='container' >
             <h2 className='xs-12'>Soap</h2>
-            <hr/>
+
               <div className='products'>
                 {
                 products.length === 0 ? 

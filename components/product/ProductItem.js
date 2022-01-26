@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -28,7 +29,7 @@ const ProductItem = ({product}) => {
         )
     }
 return (
-    <React.Fragment>
+    
         <div className="card" key={product._id}>
             <img className="card-img-top" src={product.images[0].url} alt={product.name} style={{borderRadius: '10px'}} />
             <div className="card-body">
@@ -49,7 +50,6 @@ return (
                 
             </div>
         </div>
-    </React.Fragment>
 )
 }
 

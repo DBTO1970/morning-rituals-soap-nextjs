@@ -17,7 +17,7 @@ function Contact() {
     return (
         <div className='container' >
             <h2>Contact Morning Rituals Soap</h2>
-            <hr/>
+
                 <form className='mx-auto my-4' style={{maxWidth: '500px'}} onSubmit={handleSubmit} >
                     <div className="form-group">
                         <label htmlFor="nameField">Name</label>

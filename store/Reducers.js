@@ -15,7 +15,8 @@ const reducers = (state, action) => {
         case ACTIONS.ADD_CART:
             return {
                 ...state,
-                cart: action.payload
+                cart: action.payload,
+                notify: action.payload
             };
         case ACTIONS.ADD_MODAL:
             return {

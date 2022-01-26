@@ -26,7 +26,7 @@ const Profile = ()=> {
 
     useEffect(() => {
         if(auth.user) setData({...data, name: auth.user.name })
-    }, [auth.user])
+    }, [auth.user, data])
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -106,8 +106,8 @@ const Profile = ()=> {
                     <div className='avatar'>
                         <img 
                             src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar} 
-                            alt="avatar" />
-                        <span>
+                            alt="avatar" aria-hidden="true" />
+                        <span className='avatar-update'>
                             <i className='fas fa-camera' aria-hidden="true" ></i>
                             <p>Change</p>
                             <input 
@@ -182,7 +182,7 @@ const Profile = ()=> {
                                     <td className='p-2'>date</td>
                                     <td className='p-2'>total</td>
                                     <td className='p-2'>delivered</td>
-                                    <td className='p-2'>action</td>
+                                    <td className='p-2'>paid</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -190,7 +190,12 @@ const Profile = ()=> {
                                     orders.map(order => (
                                         // eslint-disable-next-line react/jsx-key
                                         <tr key={order._id}>
-                                            <td className='p-2'>{order._id}</td>
+                                            <td className='p-2'>
+                                                <Link href={`/order/${order._id}`} >
+                                                    <a>{order._id}</a>
+                                                </Link>
+                                                
+                                            </td>
                                             <td className='p-2'>
                                                 {new Date(order.createdAt).toLocaleDateString()}</td>
                                             <td className='p-2'>${order.total}</td>
@@ -200,10 +205,11 @@ const Profile = ()=> {
                                                 : <i className='fas fa-times text-danger' aria-hidden="true" ></i>
                                                 }
                                             </td>
-                                            <td className='p-2'>
-                                                <Link href={`/order/${order._id}`} >
-                                                    <a>details</a>
-                                                </Link>
+                                            <td className='p-2'>{
+                                                order.paid 
+                                                ? <i className='fas fa-check text-success' aria-hidden="true" ></i>
+                                                : <i className='fas fa-times text-danger' aria-hidden="true" ></i>
+                                                }
                                             </td>
                                         </tr>
                                     ))

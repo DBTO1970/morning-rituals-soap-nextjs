@@ -19,7 +19,7 @@
 .DS_Store
 *.pem
 info.txt
-next.config.js
+
 /data/initialData.json
 
 # debug
@@ -32,6 +32,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+next.config.js
 
 # vercel
 .vercel

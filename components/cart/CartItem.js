@@ -62,12 +62,12 @@ const CartItem = ({item, dispatch, cart}) => {
                 type: 'ADD_MODAL',
                 payload: { 
                     data: cart, 
+                    title: item.title,
                     id: item._id, 
-                    title: item.name,
                     type: 'ADD_CART'
                     }
                 }))} 
-                data-toggle="modal" data-target="#deleteItemModal" 
+                data-toggle="modal" data-target="#exampleModal" 
                 aria-hidden
                 ></i>
             </td>

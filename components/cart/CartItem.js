@@ -38,7 +38,7 @@ const CartItem = ({item, dispatch, cart}) => {
                     style={{borderRadius: '40px'}} 
                     onClick={() => dispatch(increase(cart, item._id)) } 
                     disabled={ item.quantity === item.inStock ? true : false } >
-                    <i className="fas fa-plus-circle" aria-hidden="true" ></i>
+                    <i className="fas fa-plus-circle" aria-hidden ></i>
                 </button>
                 <span 
                     className='text-info align-middle mx-2 px-2' 
@@ -52,7 +52,7 @@ const CartItem = ({item, dispatch, cart}) => {
                     onClick={() => dispatch(decrease(cart, item._id)) } 
                     disabled={ item.quantity <= 1 ? true : false }
                     > 
-                    <i className="fas fa-minus-circle" aria-hidden="true" ></i>
+                    <i className="fas fa-minus-circle" aria-hidden ></i>
                 </button>
             </td>
             <td className='align-middle' style={{ cursor: 'pointer', }} >
@@ -63,11 +63,12 @@ const CartItem = ({item, dispatch, cart}) => {
                 payload: { 
                     data: cart, 
                     id: item._id, 
-                    title: item.name
+                    title: item.name,
+                    type: 'ADD_CART'
                     }
                 }))} 
                 data-toggle="modal" data-target="#deleteItemModal" 
-                aria-hidden="true" 
+                aria-hidden
                 ></i>
             </td>
         </tr>

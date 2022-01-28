@@ -15,14 +15,14 @@ const ProductItem = ({product}) => {
             <div className='text-center mb-2'>
                 <Link href={`product/${product._id}`} passHref >
                     <a className='btn btn-info text-center' style={{width: '150px',
-    margin: '1px 2px 1px 2px'}}><i className="fas fa-info-circle" ></i> Info</a>
+    margin: '1px 2px 1px 2px'}}><i className="fas fa-info-circle" aria-hidden></i> Info</a>
                 </Link>
                 <a className='btn btn-success text-center' 
                     style={{width: '150px', 
                     margin: '1px 2px 1px 2px'}} 
                     disabled={product.inStock === 0 ? true : false }
                     onClick={() => dispatch(addToCart(product, cart))} >
-                    <i className="fas fa-shopping-basket" style={{margin: '0 5px'}} aria-hidden="true" ></i>  
+                    <i className="fas fa-shopping-basket" style={{margin: '0 5px'}} aria-hidden></i>  
                     Add to Basket
                 </a>
 

@@ -77,7 +77,7 @@ const ProductDetail = (props) => {
                 <i 
                     className="fas fa-shopping-basket" 
                     style={{margin: '0 5px'}} 
-                    aria-hidden="true" 
+                    aria-hidden 
                     ></i>  
                 Add to Basket
             </button>

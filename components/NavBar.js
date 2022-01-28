@@ -26,6 +26,7 @@ function NavBar() {
         localStorage.removeItem('firstLogin')
         dispatch({ type: 'AUTH', payload: {}})
         dispatch({ type: 'NOTIFY', payload: {success: 'Logged out!'}})
+        return router.push('/')
     }
 
     const adminRouter = () => {
@@ -104,7 +105,7 @@ function NavBar() {
                     </li>
                     <li className="nav-item">
                         <Link href="/cart">
-                            <a className={"nav-link" + isActive('/cart')} ><i className="fas fa-shopping-basket position-relative" >
+                            <a className={"nav-link" + isActive('/cart')} ><i className="fas fa-shopping-basket position-relative" aria-hidden >
                                 <span className='position-absolute' style={{
                                     padding: '3px 6px',
                                     background: '#ed143dc2',

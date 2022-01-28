@@ -25,13 +25,20 @@ const PaypalBtn = ({order}) => {
             // Finalize the transaction after payer approval
             onApprove: function(data, actions) {
 
-              return actions.order.capture().then(function() {
-                patchData(`order/${order._id}`, null, auth.token)
+              return actions.order.capture().then(function(details) {
+                
+                patchData(`order/payment/${order._id}`, {
+                  paymentId: details.payer.payer_id
+                }, auth.token)
                 .then(res => {
                   if(res.err) return dispatch({type: 'NOTIFY', payload: { error: res.err}})
 
                   dispatch (updateItem(orders, order._id, {
-                    ...order, paid: true, dateOfPayment: new Date().toISOString()
+                    ...order, 
+                    paid: true, 
+                    dateOfPayment: details.create_time,
+                    paymentId: details.payer.payer_id, 
+                    method: 'Paypal'
                   }, 'ADD_ORDERS'))
 
                   return dispatch({type: 'NOTIFY', payload: { success: res.msg}})

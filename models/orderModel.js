@@ -9,7 +9,9 @@ const orderSchema = new mongoose.Schema({
     phone: String,
     cart: Array,
     total: Number,
-    delivered: {
+    paymentId: String,
+    method: String,
+    shipped: {
         type: Boolean,
         default: false
     },

@@ -29,6 +29,10 @@ const productSchema = new mongoose.Schema({
     images: {
         type: Array,
         required: true,
+        url: {
+            type: String,
+            default: 'https://res.cloudinary.com/morning-rituals-soap/image/upload/v1642426899/mrs_nextjs_media/IMG_0006_b6lgjc.jpg'
+        }
     },
     dateMade: {
         type: Date,

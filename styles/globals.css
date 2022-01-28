@@ -80,7 +80,7 @@ a:hover {
 }
 
 .code {
-  background: #fafafa;
+  /* background: #fafafa; */
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -186,16 +186,19 @@ img {
   -o-border-radius: 20px;
 }
 .navbar {
-  color: 'white';
-  background-color: 'black';
-  background-image: url('../public/coffee_beans_banner.jpg');
+  background-color: transparent;
   width: 100%;
   margin: 0 auto;
   
 
 }
+
+.layout-component {
+  background-color: transparent;
+}
+
 .navbar-toggler-icon {
-  background-color: white;
+  background-color: transparent;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -203,18 +206,14 @@ img {
   -o-border-radius: 5px;
 }
 
-.navbar-toggler-icon:hover {
-  background-color: gray;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+span .navbar-toggler-icon:hover {
+  color: blue;
+ 
 }
 
-.user-name {
+/* .user-name {
   color: white;
-}
+} */
 
 .btn {
   box-shadow: 5px 5px 5px lightgray;

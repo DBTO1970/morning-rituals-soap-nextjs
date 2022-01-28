@@ -14,13 +14,16 @@ const Cart = () => {
     const [total, setTotal] = useState(0)
     
     const [address, setAddress] = useState('')
-    // const [city, setCity] = useState('')
-    // const [stateUS, setUS] = useState('')
-    // const [zipcode, setZipcode] = useState('')
+    const [city, setCity] = useState('')
+    const [stateUS, setUS] = useState('')
+    const [zipcode, setZipcode] = useState('')
     const [phone, setPhone] = useState('')
+
 
     const [callback, setCallback] = useState(false)
     const router = useRouter()
+    
+    
 
     useEffect(()=>{
         const getTotal = () => {
@@ -34,6 +37,7 @@ const Cart = () => {
         getTotal()
     }, [cart])
 
+    
     useEffect(() => {
         const cartLocal = JSON.parse(localStorage.getItem('__morningrs__cart01__user01'))
         if(cartLocal && cartLocal.length > 0) {
@@ -55,7 +59,7 @@ const Cart = () => {
             }
             updateCart()
         }
-    }, [callback, dispatch])
+    }, [callback])
 
     const handlePayment = async () => {
         
@@ -93,8 +97,9 @@ const Cart = () => {
 
             return router.push(`/order/${res.newOrder._id}`)
         })
-        console.log(cart)
-    }
+        
+
+    } 
 
     if(cart.length === 0) 
         return (
@@ -137,7 +142,7 @@ const Cart = () => {
                 <div className='col-md-4 my-3 text-right text-secondary'>
                     <form>
                         <h2>Shipping Details</h2>
-                        <label htmlFor='address'> Address</label>
+                        <label htmlFor='address'> Street Address</label>
                         <input 
                             type="text" 
                             name="address" 
@@ -146,12 +151,12 @@ const Cart = () => {
                             value={address} 
                             onChange={e => setAddress(e.target.value)} 
                         />
-                        {/* <label htmlFor='city'> City</label>
+                        <label htmlFor='city'> City</label>
                         <input type="text" name="city" id="city" className="form-control mb-2" value={city} onChange={e => setCity(e.target.value)}  />
                         <label htmlFor='US'> State</label>
                         <input type="text" name="US" id="US" className="form-control mb-2" value={stateUS} onChange={e => setUS(e.target.value)}  />
                         <label htmlFor='zipcode'> Zipcode</label>
-                        <input type="text" name="zipcode" id="zipcode" className="form-control mb-2" value={zipcode} onChange={e => setZipcode(e.target.value)}  /> */}
+                        <input type="text" name="zipcode" id="zipcode" className="form-control mb-2" value={zipcode} onChange={e => setZipcode(e.target.value)}  />
                         <label htmlFor='phone'> Phone</label>
                         <input 
                             type="tel" 
@@ -161,6 +166,7 @@ const Cart = () => {
                             value={phone} 
                             onChange={e => setPhone(e.target.value)} 
                         />
+                        
                     </form>
                     <h3>Order Total: <span className='text-info'>${total}</span></h3>
                     <Link href={auth.user ? '#!' : '/signin'} passHref >

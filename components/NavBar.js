@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useContext } from 'react'
 import Link from 'next/link'
-// import image from 'next/image'
 import { useRouter } from 'next/router'
 import { DataContext } from '../store/GlobalState'
 import Cookie from 'js-cookie'
@@ -28,6 +28,22 @@ function NavBar() {
         dispatch({ type: 'NOTIFY', payload: {success: 'Logged out!'}})
     }
 
+    const adminRouter = () => {
+        return(
+            <>
+                <Link href="/users" passHref >
+                    <a className="dropdown-item">Users</a>
+                </Link>
+                <Link href="/create" passHref >
+                    <a className="dropdown-item">Products</a>
+                </Link>
+                <Link href="/categories" passHref >
+                <a className="dropdown-item">Categories</a>
+            </Link>
+            </>
+        )
+    }
+
 
     const loggedRouter = () => {
         return (
@@ -39,12 +55,15 @@ function NavBar() {
                     }} />
                     <span className="user-name">{auth.user.name}</span>
             </a>
+
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <Link href="/profile">
+            <Link href="/profile" passHref >
                 <a className="dropdown-item">Profile</a>
             </Link>
-           
-            <Link href="#">
+           {
+               auth.user.role === 'admin' && adminRouter() 
+           }
+            <Link href="#" passHref >
                 <button className="dropdown-item" onClick={handleLogout} >Log Out</button>
             </Link>
             
@@ -55,9 +74,9 @@ function NavBar() {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light xs-12" style={{backgroundImage: `url('./coffee_beans_banner.jpg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height:'auto' }}>
+        <nav className="navbar navbar-expand-lg navbar-light" style={{height:'auto' }}>
         <Link href="/">
-            <a className="navbar-brand text-light" ><h1>Morning Rituals Soap</h1></a>
+            <a className="navbar-brand text-dark text-wrap" ><h1>Morning Rituals</h1></a>
         </Link>
             
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style={{color: 'white'}} >
@@ -67,25 +86,25 @@ function NavBar() {
                 <ul className="navbar-nav p-1">
                 <li className="nav-item">
                         <Link href="/products">
-                            <a className={"nav-link" + isActive('/products')} style={{color: 'white'}} ><i className="fas fa-soap" ></i>  Soap</a>
+                            <a className={"nav-link" + isActive('/products')} ><i className="fas fa-soap" ></i>  Soap</a>
                         </Link>
                         
                     </li>
                     <li className="nav-item">
                         <Link href="/about">
-                            <a className={"nav-link" + isActive('/about')} style={{color: 'white'}} ><i className="fas fa-info-circle" ></i>  About</a>
+                            <a className={"nav-link" + isActive('/about')} ><i className="fas fa-info-circle" ></i>  About</a>
                         </Link>
                         
                     </li>
                     <li className="nav-item">
                         <Link href="/contact">
-                            <a className={"nav-link" + isActive('/contact')} style={{color: 'white'}} ><i className="fas fa-envelope" ></i>  Contact</a>
+                            <a className={"nav-link" + isActive('/contact')} ><i className="fas fa-envelope" ></i>  Contact</a>
                         </Link>
                         
                     </li>
                     <li className="nav-item">
                         <Link href="/cart">
-                            <a className={"nav-link" + isActive('/cart')} style={{color: 'white'}} ><i className="fas fa-shopping-basket position-relative" >
+                            <a className={"nav-link" + isActive('/cart')} ><i className="fas fa-shopping-basket position-relative" >
                                 <span className='position-absolute' style={{
                                     padding: '3px 6px',
                                     background: '#ed143dc2',
@@ -104,7 +123,7 @@ function NavBar() {
                         ? 
                         <li className="nav-item">
                         <Link href="/signin">
-                            <a className={"nav-link" + isActive('/signin')} style={{color: 'white'}} ><i className="fas fa-sign-in-alt" ></i>  Sign In</a>
+                            <a className={"nav-link" + isActive('/signin')} ><i className="fas fa-sign-in-alt" ></i>  Sign In</a>
                         </Link>
                         
                         </li>
@@ -116,6 +135,7 @@ function NavBar() {
                 
                 </ul>
             </div>
+            
         </nav>
     )
 }

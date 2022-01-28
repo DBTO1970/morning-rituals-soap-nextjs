@@ -12,20 +12,21 @@ const ProductItem = ({product}) => {
 
     const userLink = () => {
         return(
-            <>
-                <Link href={`product/${product._id}`}>
-                    <a className='btn btn-info' 
-                        style={{marginRight: '5px', flex: 1}}><i className="fas fa-info-circle" ></i> Info</a>
+            <div className='text-center mb-2'>
+                <Link href={`product/${product._id}`} passHref >
+                    <a className='btn btn-info text-center' style={{width: '150px',
+    margin: '1px 2px 1px 2px'}}><i className="fas fa-info-circle" ></i> Info</a>
                 </Link>
-                <button className='btn btn-success'
-                    style={{marginLeft: '5px', flex: 1}} 
+                <a className='btn btn-success text-center' 
+                    style={{width: '150px', 
+                    margin: '1px 2px 1px 2px'}} 
                     disabled={product.inStock === 0 ? true : false }
                     onClick={() => dispatch(addToCart(product, cart))} >
                     <i className="fas fa-shopping-basket" style={{margin: '0 5px'}} aria-hidden="true" ></i>  
-                    Buy
-                </button>
+                    Add to Basket
+                </a>
 
-            </>
+            </div>
         )
     }
 return (
@@ -44,11 +45,10 @@ return (
                     }
                 </div>
                 <p className="card-text" title={product.description} >{product.description} </p><br />
-                <div className="row justify-content-between mx-0">
-                    {userLink()}
-                </div>
+                
                 
             </div>
+                {userLink()}
         </div>
 )
 }

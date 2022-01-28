@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import { useState, useContext, useEffect } from 'react'
@@ -17,8 +18,10 @@ const DetailOrder = () => {
     useEffect(() => {
         const newArr = orders.filter(order => order._id === router.query.id)
         setOrderDetail(newArr)
-    }, [orders, router.query.id])
+    }, [orders])
+    
 
+    if(!auth.user) return null;
     return(
         <div className='my-3'>
             <Head>
@@ -30,7 +33,7 @@ const DetailOrder = () => {
                 </button>
             </div>
 
-            <OrderDetail orderDetail={orderDetail} />
+            <OrderDetail orderDetail={orderDetail} state={state} dispatch={dispatch} />
         </div>
     )
 }

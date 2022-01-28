@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import Link from 'next/link'
@@ -26,7 +27,7 @@ const Profile = ()=> {
 
     useEffect(() => {
         if(auth.user) setData({...data, name: auth.user.name })
-    }, [auth.user, data])
+    }, [auth.user])
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -175,13 +176,13 @@ const Profile = ()=> {
                     <h3 className='text-uppercase'>Orders</h3>
                     <div className='my-3 table-responsive'>
                         <table className='table-bordered table-hover w-100 text-uppercase'
-                            style={{minWidth: '600px', cursor: 'pointer'}}>
-                            <thead className='bg-light font-weight-bold'>
+                            style={{cursor: 'pointer'}}>
+                            <thead className='bg-light font-weight-bold text-center'>
                                 <tr>
                                     <td className='p-2'>id</td>
                                     <td className='p-2'>date</td>
                                     <td className='p-2'>total</td>
-                                    <td className='p-2'>delivered</td>
+                                    <td className='p-2'>shipped</td>
                                     <td className='p-2'>paid</td>
                                 </tr>
                             </thead>
@@ -189,7 +190,7 @@ const Profile = ()=> {
                                 {
                                     orders.map(order => (
                                         // eslint-disable-next-line react/jsx-key
-                                        <tr key={order._id}>
+                                        <tr key={order._id} className='text-center'>
                                             <td className='p-2'>
                                                 <Link href={`/order/${order._id}`} >
                                                     <a>{order._id}</a>
@@ -197,19 +198,37 @@ const Profile = ()=> {
                                                 
                                             </td>
                                             <td className='p-2'>
-                                                {new Date(order.createdAt).toLocaleDateString()}</td>
-                                            <td className='p-2'>${order.total}</td>
-                                            <td className='p-2'>{
-                                                order.delivered 
-                                                ? <i className='fas fa-check text-success' aria-hidden="true" ></i>
-                                                : <i className='fas fa-times text-danger' aria-hidden="true" ></i>
-                                                }
+                                            <Link href={`/order/${order._id}`} ><a>{new Date(order.createdAt).toLocaleDateString()}</a></Link>
+                                               </td>
+                                            <td className='p-2'>
+                                                <Link href={`/order/${order._id}`} >
+                                                    <a>
+                                                        ${order.total}
+                                                    </a>
+                                                </Link>
                                             </td>
-                                            <td className='p-2'>{
-                                                order.paid 
-                                                ? <i className='fas fa-check text-success' aria-hidden="true" ></i>
-                                                : <i className='fas fa-times text-danger' aria-hidden="true" ></i>
-                                                }
+                                            <td className='p-2'>
+                                                <Link href={`/order/${order._id}`} >
+                                                    <a>
+                                                        {
+                                                        order.shipped 
+                                                        ? <i className='fas fa-check text-success' aria-hidden="true" ></i>
+                                                        : <i className='fas fa-times text-danger' aria-hidden="true" ></i>
+                                                        }
+                                                    </a>
+                                                </Link>
+                                            </td>
+                                            <td className='p-2'>
+                                                <Link href={`/order/${order._id}`} >
+                                                    <a>
+                                                        {
+                                                            order.paid 
+                                                            ? <i className='fas fa-check text-success' aria-hidden="true" ></i>
+                                                            : <i className='fas fa-times text-danger' aria-hidden="true" ></i>
+                                                        }
+                                                    </a>
+                                                </Link>
+                                            
                                             </td>
                                         </tr>
                                     ))

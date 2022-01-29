@@ -29,7 +29,7 @@ const DetailOrder = () => {
             </Head>
             <div>
                 <button className='btn btn-dark' onClick={() => router.back() }>
-                    <i className='fas fa-arrow-left' aria-hidden ></i> Back
+                    <i className='fas fa-arrow-left' aria-hidden='true' ></i> Back
                 </button>
             </div>
 

@@ -10,7 +10,7 @@ import { addToCart } from '../../store/Actions'
 
 const ProductDetail = (props) => {
     const [product] = useState(props.product)
-    const images = [product.image, product.Alt1, product.Alt2]
+    // const images = [product.image, product.Alt1, product.Alt2]
     const [tab, setTab] = useState(0)
 
     const { state, dispatch } = useContext(DataContext)
@@ -77,7 +77,7 @@ const ProductDetail = (props) => {
                 <i 
                     className="fas fa-shopping-basket" 
                     style={{margin: '0 5px'}} 
-                    aria-hidden 
+                    aria-hidden='true' 
                     ></i>  
                 Add to Basket
             </button>

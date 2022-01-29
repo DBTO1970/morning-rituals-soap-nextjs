@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useContext } from "react" 
 import { patchData } from '../utils/fetchData';
 import { DataContext } from "../store/GlobalState";
@@ -24,6 +25,7 @@ const PaypalBtn = ({order}) => {
     
             // Finalize the transaction after payer approval
             onApprove: function(data, actions) {
+              dispatch({ type: 'NOTIFY', payload: {loading: true} })
 
               return actions.order.capture().then(function(details) {
                 
@@ -54,12 +56,9 @@ const PaypalBtn = ({order}) => {
             }
           }).render(refPaypalBtn.current);
     }, [])
-
     
     return(
-        <div ref={refPaypalBtn}>
-
-        </div>
+        <div ref={refPaypalBtn}></div>
     )
 }
 

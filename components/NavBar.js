@@ -64,10 +64,8 @@ function NavBar() {
            {
                auth.user.role === 'admin' && adminRouter() 
            }
-            <Link href="#" passHref >
                 <button className="dropdown-item" onClick={handleLogout} >Log Out</button>
-            </Link>
-            
+
             </div>
         </li>
         )
@@ -105,7 +103,7 @@ function NavBar() {
                     </li>
                     <li className="nav-item">
                         <Link href="/cart">
-                            <a className={"nav-link" + isActive('/cart')} ><i className="fas fa-shopping-basket position-relative" aria-hidden >
+                            <a className={"nav-link" + isActive('/cart')} ><i className="fas fa-shopping-basket position-relative" aria-hidden='true' >
                                 <span className='position-absolute' style={{
                                     padding: '3px 6px',
                                     background: '#ed143dc2',

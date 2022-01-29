@@ -1,12 +1,12 @@
-import Head from 'next/head'
-import { useState, useContext, useEffect } from 'react'
-import {DataContext} from '../store/GlobalState'
-
 import { getData } from '../utils/fetchData'
+import { useState, useContext, useEffect } from 'react'
+import { DataContext } from '../store/GlobalState'
+import Head from 'next/head'
 import ProductItem from '../components/product/ProductItem'
 import filterSearch from '../utils/filterSearch'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import Filter from '../components/Filter'
+
 
 const Home = (props) => {
   const [products, setProducts] = useState(props.products)
@@ -60,10 +60,12 @@ const Home = (props) => {
     filterSearch({router, page: page + 1})
   }
 
+
   return(
-    <div className="home_page">
+    <div className='home_page'>
+    
       <Head>
-        <title>Home Page</title>
+        <title>Morning Rituals Soap</title>
       </Head>
 
       <Filter state={state} />
@@ -82,31 +84,43 @@ const Home = (props) => {
         </div>
       }
 
-      <div className="products">
-        {
-          products.length === 0 
-          ? <h2>No Products</h2>
 
-          : products.map(product => (
-            <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
-          ))
+      <div className='container' >
+        <div>
+          <h2>Handcrafted with Simple Ingredients</h2>
+          <p>We craft our soap in a variety of coffee shop scents and other pleasing fragrances. Coffee soap used in the shower may help to reduce the appearance of cellulite, redness, acne and dark circles. It&apos;s also great in the kitchen to remove food odors and for use after gardening.</p>
+        </div>
+          
+          <hr />
+          <h4>Featured Soaps</h4>
+          <div className="products">
+          {
+            products.length === 0 
+            ? <h2>No Products</h2>
+
+            : products.map(product => (
+              <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
+            ))
+          }
+        </div>
+        
+        {
+          props.result < page * 6 ? ""
+          : <button className="btn btn-outline-info d-block mx-auto mb-4"
+          onClick={handleLoadmore}>
+            Load more
+          </button>
         }
-      </div>
       
-      {
-        props.result < page * 6 ? ""
-        : <button className="btn btn-outline-info d-block mx-auto mb-4"
-        onClick={handleLoadmore}>
-          Load more
-        </button>
-      }
-    
+      </div>
+
+
+
     </div>
   )
 }
 
-
-export async function getServerSideProps({query}) {
+export async function getServerSideProps() {
   const page = query.page || 1
   const category = query.category || 'all'
   const sort = query.sort || ''
@@ -115,7 +129,7 @@ export async function getServerSideProps({query}) {
   const res = await getData(
     `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
   )
-  // server side rendering
+  //server side rendering
   return {
     props: {
       products: res.products,

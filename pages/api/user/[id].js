@@ -1,12 +1,12 @@
+/* eslint-disable import/no-anonymous-default-export */
 import connectDB from '../../../utils/connectDB'
 import Users from '../../../models/userModel'
 import auth from '../../../middleware/auth'
 
 connectDB()
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-    switch(req.method) {
+    switch(req.method){
         case "PATCH":
             await updateRole(req, res)
             break;
@@ -18,16 +18,16 @@ export default async (req, res) => {
 
 const updateRole = async (req, res) => {
     try {
-        const result = await auth(req, res)
-        if(result.role !== 'admin' || !result.root)
-        return res.status(400).json({err: "Authentication is not valid"})
+       const result = await auth(req, res)
+       if(result.role !== 'admin' || !result.root) 
+       return res.status(400).json({err: "Authentication is not valid"})
 
-        const {id} = req.query
-        const {role} = req.body
+       const {id} = req.query
+       const {role} = req.body
 
-        await Users.findOneAndUpdate({_id: id}, {role})
-        res.json({msg: 'Update Successful'})
-        
+       await Users.findOneAndUpdate({_id: id}, {role})
+       res.json({msg: 'Update Success!'})
+
     } catch (err) {
         return res.status(500).json({err: err.message})
     }
@@ -35,15 +35,15 @@ const updateRole = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const result = await auth(req, res)
-        if(result.role !== 'admin' || !result.root)
-        return res.status(400).json({err: "Authentication is not valid"})
+       const result = await auth(req, res)
+       if(result.role !== 'admin' || !result.root) 
+       return res.status(400).json({err: "Authentication is not valid"})
 
-        const {id} = req.query
+       const {id} = req.query
 
-        await Users.findByIdAndDelete({_id: id}, {role})
-        res.json({msg: 'Delete Successful'})
-        
+       await Users.findByIdAndDelete(id)
+       res.json({msg: 'Deleted Success!'})
+
     } catch (err) {
         return res.status(500).json({err: err.message})
     }

@@ -1,22 +1,22 @@
 import { ACTIONS } from './Actions'
 
+
 const reducers = (state, action) => {
-    switch(action.type) {
+    switch(action.type){
         case ACTIONS.NOTIFY:
             return {
-                ...state, 
+                ...state,
                 notify: action.payload
             };
         case ACTIONS.AUTH:
             return {
-                ...state, 
+                ...state,
                 auth: action.payload
             };
         case ACTIONS.ADD_CART:
             return {
                 ...state,
-                cart: action.payload,
-                notify: action.payload
+                cart: action.payload
             };
         case ACTIONS.ADD_MODAL:
             return {
@@ -33,9 +33,13 @@ const reducers = (state, action) => {
                 ...state,
                 users: action.payload
             };
+        case ACTIONS.ADD_CATEGORIES:
+            return {
+                ...state,
+                categories: action.payload
+            };
         default:
-            return state
-                
+            return state;
     }
 }
 

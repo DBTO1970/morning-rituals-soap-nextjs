@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
-import { increase, decrease } from '../../store/Actions'
+import { increase, decrease } from '../store/Actions'
 
 const CartItem = ({item, dispatch, cart}) => {
     return (
@@ -38,7 +38,7 @@ const CartItem = ({item, dispatch, cart}) => {
                     style={{borderRadius: '40px'}} 
                     onClick={() => dispatch(increase(cart, item._id)) } 
                     disabled={ item.quantity === item.inStock ? true : false } >
-                    <i className="fas fa-plus-circle" aria-hidden ></i>
+                    <i className="fas fa-plus-circle" aria-hidden='true' ></i>
                 </button>
                 <span 
                     className='text-info align-middle mx-2 px-2' 
@@ -52,23 +52,25 @@ const CartItem = ({item, dispatch, cart}) => {
                     onClick={() => dispatch(decrease(cart, item._id)) } 
                     disabled={ item.quantity <= 1 ? true : false }
                     > 
-                    <i className="fas fa-minus-circle" aria-hidden ></i>
+                    <i className="fas fa-minus-circle" aria-hidden='true' ></i>
                 </button>
             </td>
             <td className='align-middle' style={{ cursor: 'pointer', }} >
             <i className="fas fa-trash text-danger" 
                 style={{fontSize: '1.5rem'}}
+                data-toggle="modal" 
+                data-target="#exampleModal" 
                 onClick={() => dispatch(({
                 type: 'ADD_MODAL',
                 payload: { 
                     data: cart, 
-                    title: item.title,
                     id: item._id, 
+                    title: item.title,
                     type: 'ADD_CART'
                     }
                 }))} 
-                data-toggle="modal" data-target="#exampleModal" 
-                aria-hidden
+                
+                aria-hidden='true'
                 ></i>
             </td>
         </tr>

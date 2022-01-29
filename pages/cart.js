@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import Link from 'next/link'
-import React, { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { DataContext } from '../store/GlobalState'
 import { useRouter } from 'next/router'
 import CartItem from '../components/cart/CartItem'
@@ -14,9 +14,9 @@ const Cart = () => {
     const [total, setTotal] = useState(0)
     
     const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [stateUS, setUS] = useState('')
-    const [zipcode, setZipcode] = useState('')
+    // const [city, setCity] = useState('')
+    // const [stUS, setStUS] = useState('')
+    // const [zipcode, setZipcode] = useState('')
     const [phone, setPhone] = useState('')
 
 
@@ -105,7 +105,7 @@ const Cart = () => {
         return (
             <div className='container' >
             <Link href={'/products/'} passHref >
-                        <button className='btn btn-dark my-3' onClick={() => router.push('/products/')}><i className="fas fa-arrow-left" aria-hidden ></i> Keep Browsing </button>
+                        <button className='btn btn-dark my-3' onClick={() => router.push('/products/')}><i className="fas fa-arrow-left" aria-hidden='true' ></i> Keep Browsing </button>
                     </Link>
                 <div  className='text-center' >
                     <h2>Your basket is empty</h2>
@@ -121,7 +121,7 @@ const Cart = () => {
                 </Head>
                 <div className='col-md-12'>
                     <Link href={'/products/'} passHref >
-                        <button className='btn btn-dark mx-auto my-2' onClick={() => router.push('/products/')}><i className="fas fa-arrow-left" aria-hidden></i> Keep Browsing </button>
+                        <button className='btn btn-dark mx-auto my-2' onClick={() => router.push('/products/')}><i className="fas fa-arrow-left" aria-hidden='true'></i> Keep Browsing </button>
                     </Link>
                 </div>
                 
@@ -142,7 +142,7 @@ const Cart = () => {
                 <div className='col-md-4 my-3 text-right text-secondary'>
                     <form>
                         <h2>Shipping Details</h2>
-                        <label htmlFor='address'> Street Address</label>
+                        <label htmlFor='address'> Address</label>
                         <input 
                             type="text" 
                             name="address" 
@@ -151,12 +151,12 @@ const Cart = () => {
                             value={address} 
                             onChange={e => setAddress(e.target.value)} 
                         />
-                        <label htmlFor='city'> City</label>
+                        {/* <label htmlFor='city'> City</label>
                         <input type="text" name="city" id="city" className="form-control mb-2" value={city} onChange={e => setCity(e.target.value)}  />
                         <label htmlFor='US'> State</label>
-                        <input type="text" name="US" id="US" className="form-control mb-2" value={stateUS} onChange={e => setUS(e.target.value)}  />
+                        <input type="text" name="US" id="US" className="form-control mb-2" value={stUS} onChange={e => setStUS(e.target.value)}  />
                         <label htmlFor='zipcode'> Zipcode</label>
-                        <input type="text" name="zipcode" id="zipcode" className="form-control mb-2" value={zipcode} onChange={e => setZipcode(e.target.value)}  />
+                        <input type="text" name="zipcode" id="zipcode" className="form-control mb-2" value={zipcode} onChange={e => setZipcode(e.target.value)}  /> */}
                         <label htmlFor='phone'> Phone</label>
                         <input 
                             type="tel" 

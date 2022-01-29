@@ -107,9 +107,9 @@ const Profile = ()=> {
                     <div className='avatar'>
                         <img 
                             src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar} 
-                            alt="avatar" aria-hidden />
+                            alt="avatar" aria-hidden='true' />
                         <span className='avatar-update'>
-                            <i className='fas fa-camera' aria-hidden ></i>
+                            <i className='fas fa-camera' aria-hidden='true' ></i>
                             <p>Change</p>
                             <input 
                                 type="file" 
@@ -212,8 +212,8 @@ const Profile = ()=> {
                                                     <a>
                                                         {
                                                         order.shipped 
-                                                        ? <i className='fas fa-check text-success' aria-hidden ></i>
-                                                        : <i className='fas fa-times text-danger' aria-hidden ></i>
+                                                        ? <i className='fas fa-check text-success' aria-hidden='true' ></i>
+                                                        : <i className='fas fa-times text-danger' aria-hidden='true' ></i>
                                                         }
                                                     </a>
                                                 </Link>
@@ -223,8 +223,8 @@ const Profile = ()=> {
                                                     <a>
                                                         {
                                                             order.paid 
-                                                            ? <i className='fas fa-check text-success' aria-hidden ></i>
-                                                            : <i className='fas fa-times text-danger' aria-hidden ></i>
+                                                            ? <i className='fas fa-check text-success' aria-hidden='true' ></i>
+                                                            : <i className='fas fa-times text-danger' aria-hidden='true' ></i>
                                                         }
                                                     </a>
                                                 </Link>

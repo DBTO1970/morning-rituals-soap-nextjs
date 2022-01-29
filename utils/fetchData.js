@@ -26,6 +26,8 @@ export const postData = async (url, post, token) => {
     return data
 }
 
+
+
 export const putData = async (url, post, token) => {
     const res = await fetch(`${baseUrl}/api/${url}`, {
         method: 'PUT',
@@ -54,6 +56,7 @@ export const patchData = async (url, post, token) => {
     return data
 }
 
+
 export const deleteData = async (url, token) => {
     const res = await fetch(`${baseUrl}/api/${url}`, {
         method: 'DELETE',
@@ -66,4 +69,3 @@ export const deleteData = async (url, token) => {
     const data = await res.json()
     return data
 }
-

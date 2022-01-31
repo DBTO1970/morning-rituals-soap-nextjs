@@ -68,7 +68,7 @@ const Register = () => {
                     <input 
                     type="email" 
                     className="form-control" 
-                    id="exampleInputEmail1" 
+                    id="email" 
                     aria-describedby="emailHelp" 
                     placeholder="Enter email" 
                     name="email" 
@@ -79,14 +79,14 @@ const Register = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Must be 6-10 alphanumeric and special characters" 
+                    <input type="password" className="form-control" id="password" placeholder="Must be 6-10 alphanumeric and special characters" 
                     name="password" 
                     value={password} 
                     onChange={handleChangeInput}
                     />
                     <br />
                     <label htmlFor="exampleInputPassword2">Confirm Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword2" placeholder="Re-enter Password" 
+                    <input type="password" className="form-control" id="cf_password" placeholder="Re-enter Password" 
                     name="cf_password" 
                     value={cf_password} 
                     onChange={handleChangeInput}

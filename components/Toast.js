@@ -1,4 +1,4 @@
-const Toast = ({msg, handleShow, bgColor}) => {
+const Toast = ({msg, handleShow, bgColor, timeOut}) => {
     return(
         <div className={`toast show position-fixed text-light ${bgColor}`}
             style={{ top: '8%', right: '20%', zIndex: 9, minWidth: '50vw', minHeight: '5vh'}} >

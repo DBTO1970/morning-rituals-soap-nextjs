@@ -4,6 +4,7 @@ import ProductItem from '../components/product/ProductItem'
 
 function Products(props) {
     const [products, setProducts] = useState(props.products)
+    
     return (
         
           <div className='container' >

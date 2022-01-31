@@ -17,9 +17,11 @@ const Home = (props) => {
 
       
       <div className='container' >
-      <div>
+      <div >
         <h2>Handcrafted with Simple Ingredients</h2>
-        <p>We craft our soap in a variety of coffee shop scents and other pleasing fragrances. Coffee soap used in the shower may help to reduce the appearance of cellulite, redness, acne and dark circles. It&apos;s also great in the kitchen to remove food odors and for use after gardening.</p>
+        <p>We craft our soap in a variety of coffee shop scents and other pleasing fragrances. 
+          Coffee soap used in the shower may help to reduce the appearance of cellulite, redness, acne and dark circles. 
+          It&apos;s also great in the kitchen to remove food odors and for use after gardening.</p>
       </div>
         
         <hr />

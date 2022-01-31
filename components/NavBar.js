@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { DataContext } from '../store/GlobalState'
@@ -26,6 +26,7 @@ function NavBar() {
         localStorage.removeItem('firstLogin')
         dispatch({ type: 'AUTH', payload: {}})
         dispatch({ type: 'NOTIFY', payload: {success: 'Logged out!'}})
+        router.push('/')
     }
 
     const adminRouter = () => {

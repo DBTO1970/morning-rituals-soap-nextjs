@@ -237,4 +237,7 @@ span .navbar-toggler-icon:hover {
 
 /* ------------ Profile ----------------*/
 @import url("./profile.css");
+
+/* ------------ Products Manager ----------------*/
+@import url("./products_manager.css");
  

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import connectDB from '../../../utils/connectDB'
 import Orders from '../../../models/orderModel'
 import Products from '../../../models/productModel'
@@ -7,7 +8,7 @@ import auth from '../../../middleware/auth'
 connectDB()
 
 
-// eslint-disable-next-line import/no-anonymous-default-export
+
 export default async (req, res) => {
     switch(req.method) {
         case "POST":
@@ -51,7 +52,7 @@ const createOrder = async (req, res) => {
             return sold(item._id, item.quantity, item.InStock, item.sold)
         })
         
-        await newOrder.save()
+        
 
         res.json({
             msg: 'Order success!  Please see below to arrange payment.',
@@ -65,7 +66,7 @@ const createOrder = async (req, res) => {
 
 const sold = async (id, quantity, oldInStock, oldSold) => {
     
-    await Products.findOneAndUpdate({__id: id}, {
+    await Products.findOneAndUpdate({_id: id}, {
         inStock: oldInStock - quantity,
         sold: quantity + oldSold
     })

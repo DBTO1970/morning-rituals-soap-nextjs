@@ -36,11 +36,11 @@ const productSchema = new mongoose.Schema({
     },
     dateMade: {
         type: Date,
-        required: true
+        
     },
     dateReady: {
         type: Date,
-        required: true,
+       
     },
     checked: {
         type: Boolean,

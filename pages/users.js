@@ -65,17 +65,15 @@ const Users = () => {
                                     {
                                         auth.user.root && auth.user.email !== user.email
                                         ? <i className='fas fa-trash-alt text-danger ml-2' title="Remove" data-toggle="modal" data-target="#exampleModal" style={{cursor: 'pointer'}} 
-                                        onClick={() => dispatch(({
+                                        onClick={() => dispatch({
                                             type: 'ADD_MODAL',
-                                            payload: { 
+                                            payload: [{ 
                                                 data: users, 
                                                 id: user._id, 
                                                 title: user.name, 
                                                 type: 'ADD_USERS'
-                                                }
-                                            }))} 
-                                        
-                                        ></i>
+                                                }]
+                                            })}></i>
                                         : <i className='fas fa-trash-alt text-danger ml-2' title="Remove"></i>
                                     }
                                 </th>

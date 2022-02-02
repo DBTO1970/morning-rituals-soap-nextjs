@@ -60,12 +60,12 @@ const CartItem = ({item, dispatch, cart}) => {
                 style={{fontSize: '1.5rem'}}
                 onClick={() => dispatch(({
                 type: 'ADD_MODAL',
-                payload: { 
+                payload: [{ 
                     data: cart, 
                     id: item._id, 
                     title: item.name, 
                     type: 'ADD_CART'
-                    }
+                    }]
                 }))} 
                 data-toggle="modal" data-target="#exampleModal" 
                 aria-hidden="true" 

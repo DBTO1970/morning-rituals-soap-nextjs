@@ -27,7 +27,13 @@ const ProductDetail = (props) => {
             <Head>
                 <title>Product Details</title>
             </Head>
+            
             <div className='col-md-6'>
+            <div>
+                <button className='btn btn-dark' onClick={() => router.back() }>
+                    <i className='fas fa-arrow-left' aria-hidden="true" ></i> Back
+                </button>
+            </div>
                 <img src={product.images[tab].url} alt={product.images[tab].url} className='d-block img-thumbnail rounded mt-4 w-100' style={{height: '350px'}} />
                 
                 <div className='row mx-0' style={{cursor: 'pointer'}} >
@@ -44,7 +50,7 @@ const ProductDetail = (props) => {
                 </div>
             </div>
             <div className='col-md-6'>
-                <h2>{product.name}</h2>
+                <h2 className='text-capitalize' >{product.name}</h2>
                     <h6>{product.description}</h6>
                     <hr />
                 <h5>Ingredient List</h5>
@@ -65,13 +71,10 @@ const ProductDetail = (props) => {
                 
             <div className="row justify-content-between mx-0" style={{marginTop: '20px'}}>
            
-            <Link href={'/products/'} passHref >
-                <button className='btn btn-dark' 
-                    style={{marginRight: '5px', flex: 1}} onClick={() => router.back()}><i className="fas fa-arrow-left"></i> Back</button>
-            </Link>
+            
            
             <button className='btn btn-success'
-                style={{marginLeft: '5px', flex: 1}} 
+                style={{marginLeft: '5px'}} 
                 disabled={product.inStock === 0 ? true : false }
                 onClick={() => dispatch(addToCart(product, cart))} >
                 <i 

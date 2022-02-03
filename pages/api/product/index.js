@@ -1,10 +1,10 @@
+/* eslint-disable import/no-anonymous-default-export */
 import connectDB from '../../../utils/connectDB'
 import Products from '../../../models/productModel'
 import auth from '../../../middleware/auth'
 
 connectDB()
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     switch(req.method){
         case "GET":
@@ -24,13 +24,13 @@ class APIfeatures {
     filtering(){
         const queryObj = {...this.queryString}
 
-        const excludeFields = ['pages', 'sort', 'limit']
+        const excludeFields = ['page', 'sort', 'limit']
         excludeFields.forEach(el => delete(queryObj[el]))
 
         if(queryObj.category !== 'all') 
             this.query.find({category: queryObj.category})
-        if(queryObj.category !== 'all') 
-            this.query.find({$regex: queryObj.title})
+        if(queryObj.name !== 'all') 
+            this.query.find({$regex: queryObj.name})
 
         this.query.find()
         return this;
@@ -38,7 +38,7 @@ class APIfeatures {
 
     sorting(){
         if(this.queryString.sort) {
-            const sortBy = this.queryString.sort.split(',').join(' ')
+            const sortBy = this.queryString.sort.split(',').join('')
             this.query = this.query.sort(sortBy)
         } else {
             this.query = this.query.sort('-createdAt')
@@ -50,7 +50,7 @@ class APIfeatures {
     paginating(){
         const page = this.queryString.page * 1 || 1
         const limit = this.queryString.limit * 1 || 6
-        const skip = (page -1) * limit;
+        const skip = (page - 1) * limit;
         this.query = this.query.skip(skip).limit(limit)
         return this;
     }
@@ -61,6 +61,7 @@ const getProducts = async (req, res) => {
         const features = new APIfeatures(Products.find(), req.query).filtering().sorting().paginating()
 
         const products  = await features.query
+        
         // const products = await Products.find()
         res.json({
             status: 'success',

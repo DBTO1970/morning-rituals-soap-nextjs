@@ -45,7 +45,7 @@ const updateProduct = async (req, res) => {
         return res.status(400).json({err: 'Please add all the required fields'})
 
         await Products.findOneAndUpdate({_id: id,}, {
-            name, price, inStock, description, ingredients, category, images
+            name: name.toLowerCase(), price, inStock, description, ingredients, category, images
         })
 
         res.json({msg: 'Success! Updated a product'})

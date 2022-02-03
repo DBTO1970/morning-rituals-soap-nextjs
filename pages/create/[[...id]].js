@@ -14,7 +14,7 @@ const ProductsManager = () => {
         inStock: 10,
         description: "",
         ingredients: "",
-        category: "soap"
+        category: ""
     }
     const [product, setProduct] = useState(initialState)
     const {name, price, inStock, description, ingredients, category} = product
@@ -158,15 +158,14 @@ const ProductsManager = () => {
 
                     <div className='input-group-prepend px-0 my-2'>
                         <select name="category" id="category" value={category} onChange={handleChangeInput} className='custom-select text-capitalize'>
-                            <option value='soap' selected>Soap</option>
+                            
                             <option value="all">All Products</option>
                             
                             {
                                 categories.map(category => 
-                                   { if(category.name !== 'soap')
-                                    {<option key={category._id} value={category._id} >
+                                   (<option key={category._id} value={category._id} >
                                         {category.name}
-                                    </option>}}
+                                    </option>)
                                 )
                             }
                         </select>

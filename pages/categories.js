@@ -79,7 +79,7 @@ const Categories = () => {
                                         payload: [{ 
                                             data: categories, 
                                             id: category._id, 
-                                            title: category.name, 
+                                            name: category.name, 
                                             type: 'ADD_CATEGORIES'
                                             }]
                                         }))} 

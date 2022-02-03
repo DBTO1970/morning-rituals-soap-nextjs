@@ -23,11 +23,11 @@ const Modal = () => {
     }
 
     const deleteCategories = (item) => {
-        dispatch(deleteItem(item.data, item.id, item.type))
-
         deleteData(`categories/${item.id}`, auth.token)
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
+
+            dispatch(deleteItem(item.data, item.id, item.type))
             return dispatch({type: 'NOTIFY', payload: {success: res.msg}})
         })
     }
@@ -69,7 +69,7 @@ const Modal = () => {
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title text-capitalize" id="exampleModalLabel">
-                        {modal.length !== 0 && modal[0].title}
+                        {modal.length !== 0 && modal[0].name}
                     </h5>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" >&times;</span>

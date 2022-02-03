@@ -70,7 +70,7 @@ const Users = () => {
                                             payload: [{ 
                                                 data: users, 
                                                 id: user._id, 
-                                                title: user.name, 
+                                                name: user.name, 
                                                 type: 'ADD_USERS'
                                                 }]
                                             })}></i>

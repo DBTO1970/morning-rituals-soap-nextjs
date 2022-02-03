@@ -85,22 +85,27 @@ function NavBar() {
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown" >
                 <ul className="navbar-nav p-1">
-                
+                    <li className="nav-item">
+                            <Link href="/">
+                                <a className={"nav-link" + isActive('/')} ><i className="fas fa-soap" aria-hidden="true"></i>  Shop</a>
+                            </Link>
+                            
+                        </li>
                     <li className="nav-item">
                         <Link href="/about">
-                            <a className={"nav-link" + isActive('/about')} ><i className="fas fa-soap" ></i>  About</a>
+                            <a className={"nav-link" + isActive('/about')} ><i className="fas fa-info" aria-hidden="true" ></i>  About</a>
                         </Link>
                         
                     </li>
                     <li className="nav-item">
                         <Link href="/contact">
-                            <a className={"nav-link" + isActive('/contact')} ><i className="fas fa-envelope" ></i>  Contact</a>
+                            <a className={"nav-link" + isActive('/contact')} ><i className="fas fa-envelope" aria-hidden="true" ></i>  Contact</a>
                         </Link>
                         
                     </li>
                     <li className="nav-item">
                         <Link href="/cart">
-                            <a className={"nav-link" + isActive('/cart')} ><i className="fas fa-shopping-basket position-relative" >
+                            <a className={"nav-link" + isActive('/cart')} ><i className="fas fa-shopping-basket position-relative" aria-hidden="true" >
                                 <span className='position-absolute' style={{
                                     padding: '3px 6px',
                                     background: '#ed143dc2',
@@ -119,7 +124,7 @@ function NavBar() {
                         ? 
                         <li className="nav-item">
                         <Link href="/signin">
-                            <a className={"nav-link" + isActive('/signin')} ><i className="fas fa-sign-in-alt" ></i>  Sign In</a>
+                            <a className={"nav-link" + isActive('/signin')} ><i className="fas fa-sign-in-alt" aria-hidden="true" ></i>  Sign In</a>
                         </Link>
                         
                         </li>

@@ -45,7 +45,7 @@ const ProductItem = ({product, handleCheck}) => {
                         payload: [{ 
                             data: '', 
                             id: product._id, 
-                            title: product.name, 
+                            name: product.name, 
                             type: 'DELETE_PRODUCT'
                             }]
                         }))} >
@@ -73,7 +73,7 @@ const ProductItem = ({product, handleCheck}) => {
                 } 
                 <img className="card-img-top" src={product.images[0].url} alt={product.name} style={{borderRadius: '10px'}} />
                 <div className="card-body">
-                    <h5 className="card-title text-capitalize" title={product.name}>{product.name}</h5>
+                    <h5 className="card-title text-capitalize" name={product.name}>{product.name}</h5>
                     <div className="row justify-content-between mx-0">
                         <h6 className="text-dark" >Price: ${product.price} US</h6>
                         {
@@ -83,7 +83,7 @@ const ProductItem = ({product, handleCheck}) => {
                             
                         }
                     </div>
-                    <p className="card-text" title={product.description} >{product.description} </p><span><Link href={`product/${product._id}`}> more...</Link></span><br />
+                    <p className="card-text" name={product.description} >{product.description} </p><span><Link href={`product/${product._id}`}> more...</Link></span><br />
                     
                     
                 </div>

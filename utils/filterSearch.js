@@ -1,4 +1,4 @@
-const filterSearch = ({router, page, category, sort, search}) => {
+const filterSearch = ({router, category, page, search, sort}) => {
     const path = router.pathname;
     const query = router.query;
 
@@ -15,4 +15,4 @@ const filterSearch = ({router, page, category, sort, search}) => {
     })
 }
 
-export default filterSearch
+export default filterSearch;

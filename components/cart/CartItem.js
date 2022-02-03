@@ -63,7 +63,7 @@ const CartItem = ({item, dispatch, cart}) => {
                 payload: [{ 
                     data: cart, 
                     id: item._id, 
-                    title: item.name, 
+                    name: item.name, 
                     type: 'ADD_CART'
                     }]
                 }))} 

@@ -10,11 +10,11 @@ import { useRouter } from 'next/router'
 const ProductsManager = () => {
     const initialState = {
         name: "",
-        price: 0,
-        inStock: 0,
+        price: 6,
+        inStock: 10,
         description: "",
         ingredients: "",
-        category: ""
+        category: "soap"
     }
     const [product, setProduct] = useState(initialState)
     const {name, price, inStock, description, ingredients, category} = product
@@ -139,7 +139,7 @@ const ProductsManager = () => {
                         <div className='col-sm-6'>
                         <div className='form-group'>
                             <label htmlFor='price'>Price</label>
-                            <input type="number" name="price" value={price} placeholder='Price' className='d-block w-100 p-2' onChange={handleChangeInput}/>
+                            <input type="number" name="price" value={price} placeholder='Price' defaultValue={6} className='d-block w-100 p-2' onChange={handleChangeInput}/>
                         </div>
                         
                         </div>
@@ -147,7 +147,7 @@ const ProductsManager = () => {
                         <div className='col-sm-6'>
                         <div className='form-group'>
                             <label htmlFor='inStock'>In Stock</label>
-                            <input type="number" name="inStock" value={inStock} placeholder='In Stock' className='d-block w-100 p-2' onChange={handleChangeInput}/>
+                            <input type="number" name="inStock" value={inStock} placeholder='In Stock' defaultValue={10} className='d-block w-100 p-2' onChange={handleChangeInput}/>
                         </div>
                         
                         </div>
@@ -158,13 +158,16 @@ const ProductsManager = () => {
 
                     <div className='input-group-prepend px-0 my-2'>
                         <select name="category" id="category" value={category} onChange={handleChangeInput} className='custom-select text-capitalize'>
+                            <option value='soap' selected>Soap</option>
                             <option value="all">All Products</option>
+                            
                             {
-                                categories.map(category => (
-                                    <option key={category._id} value={category._id}>
+                                categories.map(category => 
+                                   { if(category.name !== 'soap')
+                                    {<option key={category._id} value={category._id} >
                                         {category.name}
-                                    </option>
-                                ))
+                                    </option>}}
+                                )
                             }
                         </select>
                     </div>

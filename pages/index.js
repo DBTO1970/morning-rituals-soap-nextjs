@@ -1,18 +1,35 @@
 import { getData } from '../utils/fetchData'
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 
 import Head from 'next/head'
 import ProductItem from '../components/product/ProductItem'
 import { DataContext } from '../store/GlobalState'
+import filterSearch from '../utils/filterSearch'
+import { useRouter } from 'next/router'
 
 
 const Home = (props) => {
   const [products, setProducts] = useState(props.products)
 
   const [isChecked, setIsChecked] = useState(false)
+  const [page, setPage] = useState(1)
+
+  const router = useRouter()
 
   const {state, dispatch} = useContext(DataContext)
   const { auth } = state
+
+  useEffect(() => {
+    setProducts(props.products)
+  }, [props.products])
+
+  useEffect(() => {
+    if(Object.keys(router.query).length === 0){
+      setPage(1)
+    } else {
+      setPage(Number(router.query.page))
+    }
+  }, [router.query])
 
   const handleCheck = (id) => {
     products.forEach(product => {
@@ -44,6 +61,12 @@ const Home = (props) => {
       payload: deleteArr })
   }
 
+  const handleLoadmore = () => {
+    setPage(page + 1)
+    filterSearch({router, page: page + 1})
+
+  }
+
   return(
     <div className="home_page container">
     
@@ -52,11 +75,7 @@ const Home = (props) => {
       </Head>
 
       <div>
-          <h2>Handcrafted with Simple Ingredients</h2>
-          <p>We craft our soap in a variety of coffee shop scents and other pleasing fragrances. 
-            Coffee soap used in the shower may help to reduce the appearance of cellulite, redness, acne and dark circles. 
-            It&apos;s also great in the kitchen to remove food odors and for use after gardening.</p>
-        
+          <h3>Handcrafted with Simple Ingredients</h3>
           
           <hr />
       
@@ -74,31 +93,38 @@ const Home = (props) => {
             </button>
         </div>
       }
-  
-      
-          <h4>Featured Soaps</h4>
-            <div className='products' >
-              
-              {
-                products.length === 0 ? 
-                <h2>No Products</h2>
-                : products.map(product => (
-                  
-                  <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
-                
-                ))
-              }
-            </div>
-  
+        <div className="products">
+          {
+            products.length === 0 
+            ? <h2>No Products</h2>
 
-
-            </div>
+            : products.map(product => (
+              <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
+            ))
+          }
+        </div>
+        {
+          props.result < page * 6 ? ""
+          : <button className='btn btn-outline-info d-block mx-auto mb-4'
+            onClick={handleLoadmore}>
+            Load more
+          </button>
+        }
+      </div>
     </div>
   )
 }
 
-export async function getServerSideProps() {
-  const res = await getData('product')
+export async function getServerSideProps({query}) {
+  const page = query.page || 1
+  const category = query.category || 'all'
+  const sort = query.sort || ''
+  const search = query.search || 'all'
+
+  const res = await getData(
+    `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
+    )
+
   //server side rendering
   return {
     props: {

@@ -104,8 +104,8 @@ const Cart = () => {
     if(cart.length === 0) 
         return (
             <div className='container' >
-            <Link href={'/products/'} passHref >
-                        <button className='btn btn-dark my-3' onClick={() => router.push('/products/')}><i className="fas fa-arrow-left" aria-hidden="true" ></i> Keep Browsing </button>
+            <Link href={'/'} passHref >
+                        <button className='btn btn-dark my-3' onClick={() => router.push('/')}><i className="fas fa-arrow-left" aria-hidden="true" ></i> Keep Browsing </button>
                     </Link>
                 <div  className='text-center' >
                     <h2>Your basket is empty</h2>
@@ -120,8 +120,8 @@ const Cart = () => {
                     <title>Basket</title>
                 </Head>
                 <div className='col-md-12'>
-                    <Link href={'/products/'} passHref >
-                        <button className='btn btn-dark mx-auto my-2' onClick={() => router.push('/products/')}><i className="fas fa-arrow-left" aria-hidden="true" ></i> Keep Browsing </button>
+                    <Link href={'/'} passHref >
+                        <button className='btn btn-dark mx-auto my-2' onClick={() => router.push('/')}><i className="fas fa-arrow-left" aria-hidden="true" ></i> Keep Browsing </button>
                     </Link>
                 </div>
                 

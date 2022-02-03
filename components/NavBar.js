@@ -77,7 +77,7 @@ function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light" style={{height:'auto' }}>
         <Link href="/">
-            <a className="navbar-brand text-dark text-wrap" ><h1>Morning Rituals</h1></a>
+            <a className="navbar-brand text-dark text-wrap" ><h1>Morning Rituals Soap</h1></a>
         </Link>
             
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style={{color: 'white'}} >
@@ -85,15 +85,10 @@ function NavBar() {
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown" >
                 <ul className="navbar-nav p-1">
-                <li className="nav-item">
-                        <Link href="/products">
-                            <a className={"nav-link" + isActive('/products')} ><i className="fas fa-soap" ></i>  Soap</a>
-                        </Link>
-                        
-                    </li>
+                
                     <li className="nav-item">
                         <Link href="/about">
-                            <a className={"nav-link" + isActive('/about')} ><i className="fas fa-info-circle" ></i>  About</a>
+                            <a className={"nav-link" + isActive('/about')} ><i className="fas fa-soap" ></i>  About</a>
                         </Link>
                         
                     </li>

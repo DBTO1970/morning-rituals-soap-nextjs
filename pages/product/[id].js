@@ -50,10 +50,10 @@ const ProductDetail = (props) => {
                 </div>
             </div>
             <div className='col-md-6'>
-                <h2 className='text-capitalize' >{product.name}</h2>
-                    <h6>{product.description}</h6>
+                <h3 className='text-capitalize' >{product.name}</h3>
+                    <p>{product.description}</p>
                     <hr />
-                <h5>Ingredient List</h5>
+                <h3>Ingredient List</h3>
                 <p>{product.ingredients}</p>
                 <hr />
                 <div style={{textAlign: 'right'}}>
